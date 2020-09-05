@@ -13,90 +13,90 @@
 
   <body style="height: 900px; background-color: #def2f1">
     <nav
-      class="navbar navbar-light navbar-expand-md"
-      style="
-        background: linear-gradient(
-          to bottom,
-          #2b7a78 0%,
-          #3aafa9 100%
-        ); /*background-color: #3aafa9;*/
-        text-align: right;
-      "
-    >
-      <div class="container-fluid">
-        <img
-          src="../assets/images/cobeat logo with shadow.png"
-          style="width: 199px; font-size: 23px"
-        /><button
-          data-toggle="collapse"
-          class="navbar-toggler"
-          data-target="#navcol-1"
+    class="navbar navbar-light navbar-expand-md"
+    style="
+      background: linear-gradient(
+        to bottom,
+        #2b7a78 0%,
+        #3aafa9 100%
+      ); /*background-color: #3aafa9;*/
+      text-align: right;
+    "
+  >
+    <div class="container-fluid">
+      <img
+        src="../assets/images/cobeat logo with shadow.png"
+        style="width: 199px; font-size: 23px"
+      /><button
+        data-toggle="collapse"
+        class="navbar-toggler"
+        data-target="#navcol-1"
+      >
+        <span class="sr-only">Toggle navigation</span
+        ><span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse"
+        id="navcol-1"
+        style="text-align: right"
+      >
+        <ul
+          class="nav navbar-nav ml-auto"
+          style="
+            text-align: right;
+            filter: saturate(104%);
+            border-color: rgb(255, 255, 255);
+            color: rgb(255, 255, 255);
+            font-size: 23px;
+          "
         >
-          <span class="sr-only">Toggle navigation</span
-          ><span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="collapse navbar-collapse"
-          id="navcol-1"
-          style="text-align: right"
-        >
-          <ul
-            class="nav navbar-nav ml-auto"
-            style="
-              text-align: right;
-              filter: saturate(104%);
-              border-color: rgb(255, 255, 255);
-              color: rgb(255, 255, 255);
-              font-size: 23px;
-            "
-          >
-            <li class="nav-item" role="presentation">
-              <a
-                class="nav-link"
-                href="../index.html"
-                style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item" role="presentation">
-              <a
-                class="nav-link"
-                href="login-page2.html"
-                style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
-                >Login</a
-              >
-            </li>
-            <li class="nav-item" role="presentation">
-              <a
-                class="nav-link"
-                href="guestmap.html"
-                style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
-                >Map</a
-              >
-            </li>
-            <li class="nav-item" role="presentation">
-              <a
-                class="nav-link"
-                href="FAQs.html"
-                style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
-                >FAQS</a
-              >
-            </li>
-            <li class="nav-item" role="presentation">
-              <a class="nav-link" href="#" style="margin-top: 0px"
-                ><img
-                  src="../assets/images/profile icon.png"
-                  style="margin-left: 5px"
-              /></a>
-            </li>
-          </ul>
-        </div>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              href="../index.html"
+              style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              href="login-page2.html"
+              style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
+              >Login</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              href="guestmap.html"
+              style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
+              >Map</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              href="FAQs.html"
+              style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
+              >FAQS</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" href="#" style="margin-top: 0px"
+              ><img
+                src="../assets/images/profile icon.png"
+                style="margin-left: 5px"
+            /></a>
+          </li>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
     <div
       id="Main"
       class="d-flex container"
-      style="background-color: #def2f1; height: 950px"
+      style="background-color: #def2f1; height: 1200px"
     >
       <div class="row" id="header">
         <div class="col">
@@ -463,6 +463,15 @@
           </div>
         </div>
       </div>
+      <div class="row" id="covid" style="height: 50px;">
+        <div class="col">
+            <div id="covid_box" class="d-flex container-fluid" style="background-color: #D3EBEA;height: 50px;width: 300px;text-align: left;">
+                <div id="checkboxes" style="height: 60px;width: 350px;justify-items: center;align-content: center;text-align: center;">
+                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1" style="margin-top: 10px;"><label class="form-check-label" for="formCheck-1" style="font-size: 20px;font-weight: bold;">I am Covid positive</label></div>
+                </div>
+            </div>
+        </div>
+    </div>
       <div class="row" id="history" style="height: 130px">
         <div class="col">
           <div
@@ -489,8 +498,8 @@
                 /><label
                   class="form-check-label"
                   for="formCheck-1"
-                  style="font-size: 12px"
-                  ><b>Traveled abroad in the past 14 days</b></label
+                  style="font-size: 15px"
+                  ><b >Traveled abroad in the past 14 days</b></label
                 >
               </div>
               <div class="form-check">
@@ -501,7 +510,7 @@
                 /><label
                   class="form-check-label"
                   for="formCheck-2"
-                  style="font-size: 12px"
+                  style="font-size: 15px"
                   ><b>Had close contact to a COVID - 19 Patient</b></label
                 >
               </div>

@@ -164,8 +164,11 @@ p {
 }
 
 
-
-@media (min-width:768px) {
+.navbar-nav > li {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+@media (min-width: 768px) {
   .navbar-expand-md {
     -ms-flex-flow: row nowrap;
     flex-flow: row nowrap;
@@ -183,10 +186,6 @@ p {
   align-items: center;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
-.navbar-nav > li {
-  padding-left: 30px;
-  padding-right: 30px;
-}

@@ -32,6 +32,20 @@ html {
   align-self: center;
 }
 
+#covid {
+  align-self: center;
+}
+
+#covid_box {
+  border-radius: 20px 20px;
+  flex-direction: column;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  justify-content: center;
+  align-content: center;
+}
+
+
 #history {
   align-self: center;
 }

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html style="background-color: #def2f1">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>trystudio</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Cookie"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Oswald"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto+Condensed"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto+Mono"
+    />
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assets/css/Pretty-Footer.css" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="stylesheet" href="../assets/css/Toggle-Switch-1.css" />
+    <link rel="stylesheet" href="../assets/css/Toggle-Switch.css" />
+  </head>
+
+  <body
+    style="
+      opacity: 1;
+      background: url(../assets/images/map bg.sgv) no-repeat;
+      background-size: cover;
+    "
+  >
+    <nav
+      class="navbar navbar-light navbar-expand-md"
+      style="
+        background: linear-gradient(
+          to bottom,
+          #2b7a78 0%,
+          #3aafa9 100%
+        ); /*background-color: #3aafa9;*/
+        text-align: right;
+      "
+    >
+      <div class="container-fluid">
+        <img
+          src="../assets/images/cobeat%20logo%20with%20shadow.png"
+          style="width: 199px; font-size: 23px"
+        /><button
+          data-toggle="collapse"
+          class="navbar-toggler"
+          data-target="#navcol-1"
+        >
+          <span class="sr-only">Toggle navigation</span
+          ><span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse"
+          id="navcol-1"
+          style="text-align: right"
+        >
+          <ul
+            class="nav navbar-nav ml-auto"
+            style="
+              text-align: right;
+              filter: saturate(104%);
+              border-color: rgb(255, 255, 255);
+              color: rgb(255, 255, 255);
+              font-size: 23px;
+            "
+          >
+            <li
+              class="nav-item"
+              role="presentation"
+              style="color: rgb(255, 255, 255); text-align: right"
+            >
+              <a
+                class="nav-link active"
+                href="#"
+                style="
+                  border-color: rgba(255, 255, 255, 0.9);
+                  color: rgba(255, 255, 255, 0.9);
+                  margin-top: 2px;
+                "
+                >Login&nbsp;</a
+              >
+            </li>
+            <li class="nav-item" role="presentation">
+              <a
+                class="nav-link"
+                href="#"
+                style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
+                >Map</a
+              >
+            </li>
+            <li class="nav-item" role="presentation">
+              <a
+                class="nav-link"
+                href="#"
+                style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
+                >FAQS</a
+              >
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" href="#" style="margin-top: 0px"
+                ><img
+                  src="../assets/images/profile icon.png"
+                  style="margin-left: 5px"
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="row">
+      <div class="col col-md-4">
+        <div class="card"><a href="#"></a></div>
+      </div>
+      <div class="col col-md-4">
+        <div class="card"><a href="#"></a></div>
+      </div>
+    </div>
+    <div id="header">
+      <div
+        class="jumbotron"
+        style="background-color: rgba(233, 236, 239, 0); text-align: center"
+      >
+        <h1
+          style="
+            color: rgb(255, 255, 255);
+            font-family: Oswald, sans-serif;
+            font-size: 114px;
+          "
+        >
+          COVID-19
+        </h1>
+        <p
+          style="
+            color: rgb(255, 255, 255);
+            height: 4px;
+            font-size: 26px;
+            font-family: 'Roboto Condensed', sans-serif;
+          "
+        >
+          Symptoms and Cases Tracker
+        </p>
+      </div>
+    </div>
+    <div class="container" id="contents">
+      <div class="row" style="background-color: rgba(222, 242, 241, 0)">
+        <div
+          class="col col-md-8"
+          id="map"
+          style="background-color: rgb(241, 211, 211)"
+        ></div>
+        <div class="col" id="filter" style="margin-top: 23px">
+          <div
+            class="filter_box"
+            style="border-radius: 0; height: 87px; background-color: #2b7a78"
+          >
+            <p
+              style="
+                font-size: 50px;
+                text-align: center;
+                font-family: 'Roboto Mono', monospace;
+                color: rgb(255, 255, 255);
+              "
+            >
+              FILTERS
+            </p>
+          </div>
+          <div
+            id="filterlist"
+            style="
+              width: 350px;
+              text-align: center;
+              height: 369px;
+              margin-top: -2px;
+              background-color: #def2f1;
+            "
+          >
+            <div
+              class="row"
+              style="
+                height: 53px;
+                background-color: rgba(222, 242, 241, 0);
+                width: 350px;
+                text-align: center;
+              "
+            >
+              <div class="col col-md-1" id="toggle" style="text-align: left">
+                <label class="switch">
+                  <input type="checkbox" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <div class="col">
+                <p
+                  class="text-left filterName"
+                  style="
+                    font-size: 29px;
+                    font-family: Roboto, sans-serif;
+                    filter: invert(0%) sepia(0%);
+                    color: #2b7a78;
+                  "
+                >
+                  Confirmed
+                </p>
+              </div>
+            </div>
+            <div
+              class="row"
+              style="
+                height: 53px;
+                background-color: rgba(43, 122, 120, 0);
+                width: 350px;
+                text-align: center;
+              "
+            >
+              <div class="col col-md-1" id="toggle-3" style="text-align: left">
+                <label class="switch">
+                  <input type="checkbox" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <div class="col">
+                <p
+                  class="text-left filterName"
+                  style="
+                    font-size: 29px;
+                    font-family: Roboto, sans-serif;
+                    color: #2b7a78;
+                  "
+                >
+                  Suspect
+                </p>
+              </div>
+            </div>
+            <div
+              class="row"
+              style="
+                height: 53px;
+                background-color: rgba(43, 122, 120, 0);
+                width: 350px;
+                text-align: center;
+              "
+            >
+              <div class="col col-md-1" id="toggle-2" style="text-align: left">
+                <label class="switch">
+                  <input type="checkbox" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <div class="col">
+                <p
+                  class="text-left filterName"
+                  style="
+                    font-size: 29px;
+                    font-family: Roboto, sans-serif;
+                    color: rgb(43, 122, 120);
+                  "
+                >
+                  Probable
+                </p>
+              </div>
+            </div>
+            <div
+              class="row"
+              style="
+                height: 53px;
+                background-color: rgba(43, 122, 120, 0);
+                width: 350px;
+                text-align: center;
+              "
+            >
+              <div class="col col-md-1" id="toggle-1" style="text-align: left">
+                <label class="switch">
+                  <input type="checkbox" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <div class="col">
+                <p
+                  class="text-left filterName"
+                  style="
+                    font-size: 29px;
+                    font-family: Roboto, sans-serif;
+                    color: rgb(43, 122, 120);
+                  "
+                >
+                  Recovered
+                </p>
+              </div>
+            </div>
+            <div
+              class="row"
+              style="
+                height: 53px;
+                background-color: rgba(43, 122, 120, 0);
+                width: 350px;
+                text-align: center;
+              "
+            >
+              <div class="col col-md-1" id="toggle-4" style="text-align: left">
+                <label class="switch">
+                  <input type="checkbox" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <div class="col">
+                <p
+                  class="text-left filterName"
+                  style="
+                    font-size: 29px;
+                    font-family: Roboto, sans-serif;
+                    color: rgb(43, 122, 120);
+                  "
+                >
+                  No Symptoms
+                </p>
+                <div
+                  id="addInfo"
+                  style="
+                    border-width: 0px;
+                    border-radius: 50px;
+                    width: 308px;
+                    background-color: #e8505b;
+                    margin: 0;
+                    margin-left: -21px;
+                    height: 64px;
+                    margin-top: 50px;
+                  "
+                >
+                  <p
+                    style="
+                      text-align: center;
+                      color: #ffffff;
+                      font-size: 32px;
+                      font-family: Oswald, sans-serif;
+                      margin-right: 3px;
+                      margin-bottom: -21px;
+                      margin-top: -23px;
+                    "
+                  >
+                    ADD YOUR INFO
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      id="footer"
+      class="d-flex jumbotron"
+      style="background-color: #17252a; height: 145px"
+    >
+      <div style="height: 50px; font-size: 12px">
+        <img
+          src="../assets/images/cobeat%20logo%20white.png"
+          style="width: 268px; height: 67px"
+        />
+      </div>
+      <p
+        style="
+          width: 392px;
+          color: #ffffff;
+          height: 72px;
+          font-size: 21px;
+          margin: 0px 0px 0px;
+        "
+      >
+        <br />Copyright © 2020 All Rights Reserved <br /><br />
+      </p>
+    </div>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/geomap.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcZUQLyd-BBsirvjvDJAmEypVZXCNamwM&amp;callback=initMap"></script>
+  </body>
+</html>

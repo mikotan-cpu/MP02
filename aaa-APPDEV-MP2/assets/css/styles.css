@@ -1,0 +1,132 @@
+#promo {
+  padding: 20px;
+  background-image: url(../images/orgBg.png);
+  text-align: center;
+  /*justify-content: center;*/
+}
+
+#promo .jumbotron {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  /*max-width: 800px;*/
+}
+html {
+  font-size: 10px;
+}
+
+@media (min-width: 992px) {
+  #promo .jumbotron {
+    padding: 20px;
+  }
+}
+.navbar-nav > li {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 992px) {
+  #promo {
+    padding: 20px;
+  }
+}
+
+#map {
+  height: 500px;
+  background-color: rgb(0, 0, 0);
+  margin-right: 10px;
+}
+
+.fa.fa-user {
+  margin-top: -38px;
+}
+
+#header {
+  height: 200px;
+  /*background: linear-gradient(to bottom, #2B7A78 0%, #3aafa9 100%);*/
+  margin-bottom: 20px;
+  background-color: #3aafa9;
+}
+
+.col {
+  height: 50%;
+}
+
+#contents .row {
+  height: 500px;
+  background-color: rgb(255, 255, 255);
+}
+
+.filter_box {
+  height: 100px;
+  width: 350px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#filterlist {
+  height: 283px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: -4px;
+}
+
+#addInfo {
+  height: 79px;
+  background-color: #e8505b;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#addInfo p {
+  padding-top: 13px;
+}
+
+#filterlist .row {
+  align-self: center;
+  margin-left: 0;
+}
+
+#toggle {
+  margin-top: 11px;
+}
+
+.filterName {
+  margin-left: 50px;
+  margin-top: 4px;
+  color: #2b7a78;
+}
+
+#filter {
+  margin-left: 10px;
+}
+
+@media (min-width: 768px) {
+  .navbar-expand-md {
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+  }
+}
+
+.navbar {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+#footer {
+  margin-top: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+  border-radius: 0px 0px 0px 0px;
+}

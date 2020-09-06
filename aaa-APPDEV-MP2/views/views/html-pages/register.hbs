@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/style2.css" />
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md" style="
+        background: linear-gradient(
+          to bottom,
+          #2b7a78 0%,
+          #3aafa9 100%
+        ); /*background-color: #3aafa9;*/
+        text-align: right;
+      ">
+        <div class="container-fluid">
+            <img src="../../../assets/images/cobeat logo with shadow.png"
+                style="width: 199px; font-size: 23px" /><button data-toggle="collapse" class="navbar-toggler"
+                data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navcol-1" style="text-align: right">
+                <ul class="nav navbar-nav ml-auto" style="
+              text-align: right;
+              filter: saturate(104%);
+              border-color: rgb(255, 255, 255);
+              color: rgb(255, 255, 255);
+              font-size: 23px;
+            ">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="../index.html"
+                            style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">Home</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="login-page2.html"
+                            style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">Login</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="views/views/html-pages/guestmap.html"
+                            style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">Map</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="views/views/html-pages/FAQS.html"
+                            style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">FAQS</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="#" style="margin-top: 0px"><img
+                                src="../assets/images/profile icon.png" style="margin-left: 5px" /></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-xl heroMargin">
+        <div class="row">
+            <div class="col-7 d-flex">
+                <img src="../../../assets/images/cobeat login.png"
+                    style="margin-left: -298px; height: 700px; object-fit: cover" />
+            </div>
+            <div class="col-5 d-flex justify-content-start size">
+                <div id="main-holder" style="margin-top: 50px">
+                    <div id="login-error-msg-holder">
+                        {{error}}
+                    </div>
+                    <img src="../../../assets/images/cobeat logo.png" style="width: 400px; height: 100px" />
+                    <form id="login-form" method="POST" action="../register">
+                        <h4 class="left">Username</h4>
+                        <input type="text" name="un" id="username-field" class="login-form-field" />
+                        <h4 class="left" style="margin-top: 15px">Password</h4>
+                        <input type="password" name="pw" id="password-field" class="login-form-field" />
+
+                        <h4 class="left" style="margin-top: 15px">Email Address</h4>
+                        <input type="text" name="em" id="email-field" class="login-form-field" />
+                        <input type="submit" value="Register" id="login-form-submit"
+                            style="margin-top: 20px; margin-bottom: 10px" />
+
+                        <a href="">Forgot Password</a>
+                    </form>
+                    <div style="
+                background-color: #17252a;
+                width: 400px;
+                height: 2px;
+                margin-top: 20px;
+                margin-bottom: 30px;
+              "></div>
+                    <input type="button" value="Create Account" id="login-form-create" style="align-self: center" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

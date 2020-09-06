@@ -1,4 +1,3 @@
-
 #Main {
   justify-content: space-around;
 }
@@ -8,7 +7,6 @@
   align-items: center;
   align-self: center;
 }
-
 
 #header_box {
   border-radius: 20px 20px;
@@ -31,8 +29,6 @@
   align-self: center;
 }
 
-
-
 #covid {
   align-self: center;
 }
@@ -45,7 +41,6 @@
   justify-content: center;
   align-content: center;
 }
-
 
 #history {
   align-self: center;
@@ -123,7 +118,7 @@ p {
 
 .left_symp {
   border-radius: 30px 30px;
-  background-color: #3AAFA9;
+  background-color: #3aafa9;
   padding-bottom: 10px;
   padding-top: 10px;
   padding-left: 20px;
@@ -132,7 +127,7 @@ p {
 
 .right_symp {
   border-radius: 30px 30px;
-  background-color: #3AAFA9;
+  background-color: #3aafa9;
   padding-bottom: 10px;
   padding-top: 10px;
   padding-left: 20px;
@@ -154,13 +149,13 @@ p {
   text-align: center;
 }
 
-.btn-primary.focus, .btn-primary:focus {
+.btn-primary.focus,
+.btn-primary:focus {
   color: #fff;
   background-color: #3aafa9;
   border-color: #3aafa9;
-  box-shadow: 0 0 0 .2rem rgba(38,143,255,.5);
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
-
 
 .navbar-nav > li {
   padding-left: 20px;
@@ -186,4 +181,3 @@ p {
   justify-content: space-between;
   padding: 0.5rem 1rem;
 }
-

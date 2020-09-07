@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
-    <title>APDEV MP (Symptoms)</title>
+    <title>Symptoms</title>
     <link
       rel="stylesheet"
       href="../../../assets/bootstrap/css/bootstrap.min.css"
@@ -136,6 +136,7 @@
             <div id="symptoms_left" class="d-flex" style="width: 50%">
               <div class="left_symp d-flex" style="height: 70px">
                 <input
+                  value="fever"
                   type="checkbox"
                   class="checkbox"
                   style="height: 52px"
@@ -174,7 +175,8 @@
               </div>
               <div class="left_symp d-flex" style="height: 70px">
                 <input
-                  type="checkbox"
+                value="drycough"
+                type="checkbox"
                   class="checkbox"
                   style="height: 52px"
                 /><img src="../../../assets/images/dry%20cough.png" />
@@ -208,7 +210,7 @@
                 </div>
               </div>
               <div class="left_symp d-flex" style="height: 70px">
-                <input type="checkbox" class="checkbox" /><img
+                <input type="checkbox" class="checkbox" value="ache"/><img
                   src="../../../assets/images/Aches%20and%20Pains.png"
                 />
                 <div
@@ -248,7 +250,7 @@
                 </div>
               </div>
               <div class="left_symp d-flex" style="height: 70px">
-                <input type="checkbox" class="checkbox" /><img
+                <input type="checkbox" class="checkbox" value="fatigue"/><img
                   src="../../../assets/images/Fatigue.png"
                 />
                 <div
@@ -279,7 +281,7 @@
                 </div>
               </div>
               <div class="left_symp d-flex" style="height: 70px">
-                <input type="checkbox" class="checkbox" /><img
+                <input type="checkbox" class="checkbox" value="sorethroat"/><img
                   src="../../../assets/images/Sore%20Throat.png"
                 />
                 <div
@@ -326,7 +328,7 @@
               style="width: 50%"
             >
               <div class="right_symp d-flex" style="height: 70px">
-                <input type="checkbox" class="checkbox" /><img
+                <input type="checkbox" class="checkbox" value="shortnessOfBreath"/><img
                   src="../../../assets/images/Shortness%20of%20breath.png"
                   style="height: 50px; width: 50px"
                 />
@@ -365,7 +367,7 @@
                 </div>
               </div>
               <div class="right_symp d-flex" style="height: 70px">
-                <input type="checkbox" class="checkbox" /><img
+                <input type="checkbox" class="checkbox" value="diarrhea" /><img
                   src="../../../assets/images/Diarrhea.png"
                   style="height: 50px; width: 47px"
                 />
@@ -398,7 +400,7 @@
                 </div>
               </div>
               <div class="right_symp d-flex">
-                <input type="checkbox" class="checkbox" /><img
+                <input type="checkbox" class="checkbox"  value="headache"/><img
                   src="../../../assets/images/Headache.png"
                   style="height: 50px; width: 46px"
                 />
@@ -431,7 +433,7 @@
                 </div>
               </div>
               <div class="right_symp d-flex" style="height: 70px">
-                <input type="checkbox" class="checkbox" /><img
+                <input type="checkbox" class="checkbox" value="lostOfSmell"/><img
                   src="../../../assets/images/Lost%20of%20smell.png"
                   style="height: 50px; width: 46px"
                 />
@@ -457,7 +459,7 @@
                 </div>
               </div>
               <div class="right_symp d-flex" style="height: 70px">
-                <input type="checkbox" class="checkbox" />
+                <input type="checkbox" class="checkbox" value="noSymptoms"/>
                 <p style="color: rgb(255, 255, 255); height: 11px">
                   <strong>None of the above</strong>
                 </p>
@@ -494,7 +496,8 @@
                   type="checkbox"
                   id="formCheck-1"
                   style="margin-top: 10px"
-                /><label
+                  value="positive"
+                  /><label
                   class="form-check-label"
                   for="formCheck-1"
                   style="font-size: 20px; font-weight: bold"
@@ -516,6 +519,7 @@
               width: 400px;
               text-align: left;
             "
+           
           >
             <div id="history_text" style="height: 40px; width: 200px">
               <p style="height: 40px; font-size: 27px; text-align: center">
@@ -528,7 +532,8 @@
                   class="form-check-input"
                   type="checkbox"
                   id="formCheck-1"
-                /><label
+                  value="traveled"
+                  /><label
                   class="form-check-label"
                   for="formCheck-1"
                   style="font-size: 15px"
@@ -540,7 +545,8 @@
                   class="form-check-input"
                   type="checkbox"
                   id="formCheck-2"
-                /><label
+                  value="contact"
+                  /><label
                   class="form-check-label"
                   for="formCheck-2"
                   style="font-size: 15px"
@@ -588,6 +594,7 @@
               class="form-check-input"
               type="checkbox"
               id="formCheck-3"
+              value="shareLocation"
             /><label class="form-check-label" for="formCheck-3"
               >I agree to share my location to this website</label
             >
@@ -624,6 +631,7 @@
       </p>
     </div>
     <script src="../../../assets/js/jquery.min.js"></script>
+    <script src="../../../assets/js/symptoms.js"></script>
     <script src="../../../assets/bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>

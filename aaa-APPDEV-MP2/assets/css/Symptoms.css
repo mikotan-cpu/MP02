@@ -10,17 +10,22 @@
 
 #header_box {
   border-radius: 20px 20px;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;
+  margin-top: 50px;
 }
-
+bi{
+  font-weight: 700;
+  font-size: 13px;
+}
 #symptoms_box {
   border-radius: 20px 20px;
 }
-
+small{
+  font-size: 10px;;
+}
 #Main {
   flex-direction: column;
 }
@@ -35,13 +40,22 @@
 
 #covid_box {
   border-radius: 20px 20px;
-  flex-direction: column;
   padding-top: 10px;
   padding-bottom: 10px;
   justify-content: center;
-  align-content: center;
+  text-align: center;
+ background-color: #d3ebea;
+ width: 400px;
+ margin-top: 10px;
+ align-self: center;
+ 
 }
-
+.align{
+  align-content: center;
+  justify-content: center;
+  text-align: center
+  ;
+}
 
 #history {
   align-self: center;
@@ -124,7 +138,10 @@ p {
   padding-bottom: 10px;
   padding-top: 10px;
   padding-left: 20px;
-  padding-right: 20px;
+  width: 45%;
+  margin-left: 20px;
+  margin-top: 10px;
+  height: 83px;
 }
 
 .right_symp {
@@ -136,6 +153,7 @@ p {
   padding-right: 20px;
   text-align: center;
   align-items: center;
+  width: 45%;
 }
 
 .checkbox {

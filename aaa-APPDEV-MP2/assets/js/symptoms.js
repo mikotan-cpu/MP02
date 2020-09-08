@@ -1,34 +1,69 @@
 
-console.log("symptoms js")
+
+// $("#submitInfo").click(function(){
+//     $.post("/getArray", userInfo) });
+
+// $.ajax({
+//     type: 'post',
+//     url: '/getArray',
+//     data: {
+//         list: userInfo
+//     }
+// });
+
 $('input[type=checkbox]').on('change', function() {
     if($(this).is(':checked'))
     { 
-        // let filter =  $(this).val()
-        //   unfilteredStatus.push(filter)
-        //   // filteredStatus = filteredStatus.filter(filter)
-        //   for(var i = filteredStatus.length - 1; i >= 0; i--) {
-        //     if(filteredStatus[i] == filter) {
-        //         filteredStatus.splice(i, 1);
-        //     }
-        // }
-        //   unfilterMap()
-        console.log($(this).val())
-        console.log("username: " + session.username)
+        userInfo.symptoms.push($(this).val())
     }
   });
 
-  $('input[value=share  ]').on('change', function() {
+  var userInfo = {
+    symptoms: []
+}
+
+  $("#submitInfo").click(function() {
+        
+        for(var i = 0; i < userInfo.symptoms.length; i++)
+        {
+            console.log("submit info userinfo: " + userInfo.symptoms[i])
+        }
+
+        console.log("user location: ")
+        console.log("lat: " + userInfo.lat)
+        console.log("long: " + userInfo.long)
+        getHealthStatus()
+        var hi = "asds"
+
+        $.post("/getArray", {arr: hi})
+  });
+
+  // user = [
+  //   {
+  //   userid: ObjectId(),
+  //   username:String,
+  //   password:String,
+  //   email:String,
+  //   latitude:float,
+  //   longitude:float,
+  //   symptoms :[String],
+  //   status:String
+    
+  //   }
+  //   ]
+
+  // markers = [
+  //   {
+  //     userid: ObjectId(),
+  //     type: String,
+  //     latitude: float,
+  //     longitude: float
+  //   }
+  // ]
+
+  $('input[value=shareLocation]').on('change', function() {
     if($(this).is(':checked'))
     { 
-        // let filter =  $(this).val()
-        //   unfilteredStatus.push(filter)
-        //   // filteredStatus = filteredStatus.filter(filter)
-        //   for(var i = filteredStatus.length - 1; i >= 0; i--) {
-        //     if(filteredStatus[i] == filter) {
-        //         filteredStatus.splice(i, 1);
-        //     }
-        // }
-        //   unfilterMap()
         console.log("user agreed to share location")
         getLocation()
     }
@@ -50,7 +85,34 @@ $('input[type=checkbox]').on('change', function() {
       let lat =  position.coords.latitude;
       let long = position.coords.longitude;
       console.log(lat + long)
+      userInfo.lat = lat
+      userInfo.long = long
     //   initMap()
 
  
+  }
+
+ 
+
+  function getHealthStatus()
+  {
+    var status;
+    for(var i = 0; i < userInfo.symptoms.length; i++)
+    {
+        if(userInfo.symptoms[i] == "positve")
+        {
+            console.log("user is positive")
+            status = "confirmed"
+        }
+        else if(userInfo.symptoms[i] == "noSymptoms"){
+            status = "noSymptoms"
+        }
+        else if(userInfo.symptoms[i] == "recovered"){
+            status = "recovered"
+        }
+        else if(userInfo.symptoms[i] == "traveled" || userInfo.symptoms[i] == "contact" || userInfo.symptoms[i] == "contact"){
+            status = "suspect"
+        }
+    }
+    console.log("get health status: " + status)
   }

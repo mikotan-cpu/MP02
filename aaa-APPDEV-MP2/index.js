@@ -184,3 +184,9 @@ app.get("/signout", (req, res) => {
 app.listen(3000, function () {
   console.log("now listening to port 30000");
 });
+
+var array
+app.post("/getArray", (req, res)=>{
+  array = req.body.arr
+  console.log("index.js " + array)
+})

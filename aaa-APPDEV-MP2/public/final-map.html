@@ -6,8 +6,11 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
-    <title>trystudio</title>
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+    <title>UPDATE map status</title>
+    <link
+      rel="stylesheet"
+      href="../../../assets/bootstrap/css/bootstrap.min.css"
+    />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Cookie"
@@ -28,20 +31,16 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto+Mono"
     />
-    <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css" />
-    <link rel="stylesheet" href="../assets/css/Pretty-Footer.css" />
-    <link rel="stylesheet" href="../assets/css/styles.css" />
-    <link rel="stylesheet" href="../assets/css/Toggle-Switch-1.css" />
-    <link rel="stylesheet" href="../assets/css/Toggle-Switch.css" />
+    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.min.css" />
+    <link rel="stylesheet" href="../../../assets/css/Pretty-Footer.css" />
+    <link rel="stylesheet" href="../../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../../assets/css/Toggle-Switch-1.css" />
+    <link rel="stylesheet" href="../../../assets/css/Toggle-Switch.css" />
+
+   
   </head>
 
-  <body
-    style="
-      opacity: 1;
-      background: url(../assets/images/map bg.sgv) no-repeat;
-      background-size: cover;
-    "
-  >
+  <body style="opacity: 1; background-size: cover">
     <nav
       class="navbar navbar-light navbar-expand-md"
       style="
@@ -55,7 +54,7 @@
     >
       <div class="container-fluid">
         <img
-          src="../assets/images/cobeat%20logo%20with%20shadow.png"
+          src="../../../assets/images/cobeat logo with shadow.png"
           style="width: 199px; font-size: 23px"
         /><button
           data-toggle="collapse"
@@ -80,26 +79,19 @@
               font-size: 23px;
             "
           >
-            <li
-              class="nav-item"
-              role="presentation"
-              style="color: rgb(255, 255, 255); text-align: right"
-            >
-              <a
-                class="nav-link active"
-                href="#"
-                style="
-                  border-color: rgba(255, 255, 255, 0.9);
-                  color: rgba(255, 255, 255, 0.9);
-                  margin-top: 2px;
-                "
-                >Login&nbsp;</a
-              >
-            </li>
             <li class="nav-item" role="presentation">
               <a
                 class="nav-link"
-                href="#"
+                href="/login"
+                style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
+                >Home</a
+              >
+            </li>
+
+            <li class="nav-item" role="presentation">
+              <a
+                class="nav-link"
+                href="views/views/html-pages/loggedin-guestmap.html"
                 style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
                 >Map</a
               >
@@ -107,17 +99,32 @@
             <li class="nav-item" role="presentation">
               <a
                 class="nav-link"
-                href="#"
+                href="loggedin-faqs.html"
                 style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
                 >FAQS</a
               >
             </li>
-            <li class="nav-item" role="presentation">
-              <a class="nav-link" href="#" style="margin-top: 0px"
-                ><img
-                  src="../assets/images/profile icon.png"
-                  style="margin-left: 5px"
-              /></a>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <img src="../../../assets/images/profile icon.png" alt="" />
+              </a>
+              <div
+                class="dropdown-menu dropdown-menu-right"
+                aria-labelledby="navbarDropdown"
+              >
+                <a class="dropdown-item" href="#">Update Health Status</a>
+
+                <a class="dropdown-item" href="#">Edit Account</a>
+                <a class="dropdown-item" href="/signout">Logout</a>
+              </div>
             </li>
           </ul>
         </div>
@@ -202,7 +209,7 @@
             >
               <div class="col col-md-1" id="toggle" style="text-align: left">
                 <label class="switch">
-                  <input type="checkbox" />
+                  <input type="checkbox" value="confirmed" />
                   <span class="slider round"></span>
                 </label>
               </div>
@@ -218,6 +225,11 @@
                 >
                   Confirmed
                 </p>
+                <img
+                  class="legend"
+                  src="../../../assets/images/confirmed.png"
+                  alt="confirmed marker"
+                />
               </div>
             </div>
             <div
@@ -231,7 +243,7 @@
             >
               <div class="col col-md-1" id="toggle-3" style="text-align: left">
                 <label class="switch">
-                  <input type="checkbox" />
+                  <input type="checkbox" value="suspect" />
                   <span class="slider round"></span>
                 </label>
               </div>
@@ -244,8 +256,13 @@
                     color: #2b7a78;
                   "
                 >
-                  Suspect
+                  Suspectjop
                 </p>
+                <img
+                  class="legend"
+                  src="../../../assets/images/suspect.png"
+                  alt="suspect marker"
+                />
               </div>
             </div>
             <div
@@ -259,7 +276,7 @@
             >
               <div class="col col-md-1" id="toggle-2" style="text-align: left">
                 <label class="switch">
-                  <input type="checkbox" />
+                  <input type="checkbox" value="probable" />
                   <span class="slider round"></span>
                 </label>
               </div>
@@ -274,6 +291,11 @@
                 >
                   Probable
                 </p>
+                <img
+                  class="legend"
+                  src="../../../assets/images/probable.png"
+                  alt="probable marker"
+                />
               </div>
             </div>
             <div
@@ -287,7 +309,7 @@
             >
               <div class="col col-md-1" id="toggle-1" style="text-align: left">
                 <label class="switch">
-                  <input type="checkbox" />
+                  <input type="checkbox" value="recovered" />
                   <span class="slider round"></span>
                 </label>
               </div>
@@ -302,6 +324,11 @@
                 >
                   Recovered
                 </p>
+                <img
+                  class="legend"
+                  src="../../../assets/images/recovered.png"
+                  alt="recovered marker"
+                />
               </div>
             </div>
             <div
@@ -315,7 +342,7 @@
             >
               <div class="col col-md-1" id="toggle-4" style="text-align: left">
                 <label class="switch">
-                  <input type="checkbox" />
+                  <input type="checkbox" value="noSymptoms" />
                   <span class="slider round"></span>
                 </label>
               </div>
@@ -330,33 +357,25 @@
                 >
                   No Symptoms
                 </p>
-                <div
-                  id="addInfo"
+                <img
+                  class="legend"
+                  src="../../../assets/images/nosymps.png"
+                  alt="no symptoms marker"
+                />
+
+                <button
+                  onclick="location.href='symptoms updater.html'"
+                  type="button"
+                  class="btn btn-danger"
                   style="
-                    border-width: 0px;
-                    border-radius: 50px;
-                    width: 308px;
-                    background-color: #e8505b;
-                    margin: 0;
-                    margin-left: -21px;
-                    height: 64px;
-                    margin-top: 50px;
+                    width: 250px;
+                    height: 50px;
+                    font-size: 2em;
+                    border-radius: 40px;
                   "
                 >
-                  <p
-                    style="
-                      text-align: center;
-                      color: #ffffff;
-                      font-size: 32px;
-                      font-family: Oswald, sans-serif;
-                      margin-right: 3px;
-                      margin-bottom: -21px;
-                      margin-top: -23px;
-                    "
-                  >
-                    ADD YOUR INFO
-                  </p>
-                </div>
+                 Update your status
+                </button>
               </div>
             </div>
           </div>
@@ -370,7 +389,7 @@
     >
       <div style="height: 50px; font-size: 12px">
         <img
-          src="../assets/images/cobeat%20logo%20white.png"
+          src="../../../assets/images/cobeat%20logo%20white.png"
           style="width: 268px; height: 67px"
         />
       </div>
@@ -388,7 +407,7 @@
     </div>
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/js/geomap.js"></script>
+    <script src="js/geomap.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcZUQLyd-BBsirvjvDJAmEypVZXCNamwM&amp;callback=initMap"></script>
   </body>
 </html>

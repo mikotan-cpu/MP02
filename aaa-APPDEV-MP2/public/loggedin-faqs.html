@@ -61,23 +61,16 @@
             <li class="nav-item" role="presentation">
               <a
                 class="nav-link"
-                href="../../../index.html"
+                href="/login"
                 style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
                 >Home</a
               >
             </li>
+
             <li class="nav-item" role="presentation">
               <a
                 class="nav-link"
-                href="login-page2.html"
-                style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
-                >Login</a
-              >
-            </li>
-            <li class="nav-item" role="presentation">
-              <a
-                class="nav-link"
-                href="guestmap.html"
+                href="loggedin-guestmap.html"
                 style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
                 >Map</a
               >
@@ -85,17 +78,32 @@
             <li class="nav-item" role="presentation">
               <a
                 class="nav-link"
-                href="FAQs.html"
+                href="loggedin-faqs.html"
                 style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
                 >FAQS</a
               >
             </li>
-            <li class="nav-item" role="presentation">
-              <a class="nav-link" href="#" style="margin-top: 0px"
-                ><img
-                  src="../../../assets/images/profile icon.png"
-                  style="margin-left: 5px"
-              /></a>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <img src="../../../assets/images/profile icon.png" alt="" />
+              </a>
+              <div
+                class="dropdown-menu dropdown-menu-right"
+                aria-labelledby="navbarDropdown"
+              >
+                <a class="dropdown-item" href="#">Update Health Status</a>
+
+                <a class="dropdown-item" href="#">Edit Account</a>
+                <a class="dropdown-item" href="/signout">Logout</a>
+              </div>
             </li>
           </ul>
         </div>

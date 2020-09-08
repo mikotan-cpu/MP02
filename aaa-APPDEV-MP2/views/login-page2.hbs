@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/style2.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/style2.css" />
 
     <title>Hello, world!</title>
 </head>
@@ -24,9 +24,8 @@
         text-align: right;
       ">
         <div class="container-fluid">
-            <img src="../../../assets/images/cobeat logo with shadow.png"
-                style="width: 199px; font-size: 23px" /><button data-toggle="collapse" class="navbar-toggler"
-                data-target="#navcol-1">
+            <img src="../assets/images/cobeat logo with shadow.png" style="width: 199px; font-size: 23px" /><button
+                data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
                 <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navcol-1" style="text-align: right">
@@ -38,19 +37,18 @@
               font-size: 23px;
             ">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" href="../index.html"
-                            style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">Home</a>
+                        <a class="nav-link" href="/" style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">Home</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" href="login-page2.html"
+                        <a class="nav-link" href="#"
                             style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">Login</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" href="views/views/html-pages/guestmap.html"
+                        <a class="nav-link" href="../public/guestmap.html"
                             style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">Map</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" href="views/views/html-pages/FAQS.html"
+                        <a class="nav-link" href="../public/FAQS.html"
                             style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">FAQS</a>
                     </li>
                     <li class="nav-item" role="presentation">
@@ -63,25 +61,31 @@
     </nav>
     <div class="container-xl heroMargin">
         <div class="row">
-            <div class="col-7 d-flex">
-                <img src="../../../assets/images/cobeat login.png"
-                    style="margin-left: -298px; height: 700px; object-fit: cover" />
+            <div class="col-xl-8 col-md-6 col-sm-12">
+                <img id="img1" src="../assets/images/cobeat login.png" style="
+              margin-left: -260px;
+              height: 670px;
+              position: absolute;
+              object-fit: cover;
+            " />
+                <img id="img2" src="../assets/images/login-responsive.png" style="
+              height: 670px;
+              width: 500px;
+              position: absolute;
+              object-fit: cover;
+              margin-left: -20px;
+            " />
             </div>
-            <div class="col-5 d-flex justify-content-start size">
-                <div id="main-holder" style="margin-top: 50px">
-                    <div id="login-error-msg-holder">
-                        {{error}}
-                    </div>
-                    <img src="../../../assets/images/cobeat logo.png" style="width: 400px; height: 100px" />
-                    <form id="login-form" method="POST" action="../register">
+            <div class="col-xl-4 col-md-6 col-sm-12 d-flex justify-content-start size">
+                <div id="main-holder">
+                    <div id="login-error-msg-holder">{{error}}</div>
+                    <img src="../assets/images/cobeat logo.png" style="width: 400px; height: 100px" />
+                    <form id="login-form" method="POST" action="../login">
                         <h4 class="left">Username</h4>
                         <input type="text" name="un" id="username-field" class="login-form-field" />
                         <h4 class="left" style="margin-top: 15px">Password</h4>
                         <input type="password" name="pw" id="password-field" class="login-form-field" />
-
-                        <h4 class="left" style="margin-top: 15px">Email Address</h4>
-                        <input type="text" name="em" id="email-field" class="login-form-field" />
-                        <input type="submit" value="Register" id="login-form-submit"
+                        <input type="submit" value="Log In" id="login-form-submit"
                             style="margin-top: 20px; margin-bottom: 10px" />
 
                         <a href="">Forgot Password</a>
@@ -93,7 +97,9 @@
                 margin-top: 20px;
                 margin-bottom: 30px;
               "></div>
-                    <input type="button" value="Create Account" id="login-form-create" style="align-self: center" />
+                    <form action="/register">
+                        <input type="submit" value="Create Account" id="login-form-create" style="align-self: center" />
+                    </form>
                 </div>
             </div>
         </div>

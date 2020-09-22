@@ -86,7 +86,7 @@ app.post("/register", urlencoder, (req, res) => {
       error: "Enter a username and password",
     });
     
-  } else if (!isAvailable(username)) {
+  } else if (isAvailable(username) == false) {
     res.render("register.hbs", {
       error: "Username not available",
     });
@@ -102,10 +102,13 @@ app.post("/register", urlencoder, (req, res) => {
       password: req.body.pw,
       email: req.body.em
     })
+
+    req.session.username = req.body.un;
+
     user.save().then((doc)=>{
           res.redirect("loggedin-index.hbs")
     })
-      req.session.username = req.body.un;
+      
 
     // for (let i = 0; i < users.length; i++) {
     //   //para lang toh macheck yung laman ng user array hehe everytime may nag reregister
@@ -134,7 +137,7 @@ app.post("/login", urlencoder, (req, res) => {
   req.session.username = req.body.un;
   req.session.password = req.body.pw;
 
-  if (!matches(req.session.username, req.session.password)) {
+  if (matches(req.session.username, req.session.password) == false) {
     res.render("login-page2.hbs", {
       error: "Username and password does not match", //ilalagay toh as {{error}} dun sa login-page2.js
     });
@@ -155,10 +158,10 @@ function isAvailable(username) {
   User.findOne({
         username: username
     }).then((doc)=>{
-      console.log(username + " is not available")
+      console.log(username + " is available")
         return true;
     },(err)=>{
-      ("username is available")
+      ("username is not  available")
        return false;
     })
 

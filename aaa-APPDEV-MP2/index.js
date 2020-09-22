@@ -4,6 +4,7 @@ const express = require("express");
 const session = require("express-session");
 const bodyparser = require("body-parser");
 const cookieparser = require("cookie-parser");
+const mongoose = require("mongoose")
 const { Router } = require("express");
 
 const app = express();
@@ -12,7 +13,16 @@ const urlencoder = bodyparser.urlencoded({
   extended: false,
 });
 
-let users = [];
+
+const User = require("./models/users.js").User
+const Marker = require("./models/markers.js").Marker
+
+
+mongoose.connect("mongodb://localhost:27017/cobeatph-db", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+
 app.use(
   bodyparser.urlencoded({
     extended: false,
@@ -32,12 +42,17 @@ app.use(
 // app.use(express.static(__dirname + "/public"));
 
 app.get("/", (req, res) => {
+  //load data from db
+    
+
   console.log("/");
   if (req.session.username) {
     console.log("/2");
     //it means that user has already signed in
     //go to home.html
     res.render("loggedin-index.hbs");
+   
+
   } else {
     console.log("/3");
     //the user has not logged in
@@ -64,28 +79,39 @@ app.get("/register", (req, res) => {
 app.post("/register", urlencoder, (req, res) => {
   let username = req.body.un;
   let password = req.body.pw;
-
+ 
+  console.log(username + " is registering")
   if (username.trim() == "" || password.trim() == "") {
     res.render("register.hbs", {
       error: "Enter a username and password",
     });
+    
   } else if (!isAvailable(username)) {
     res.render("register.hbs", {
       error: "Username not available",
     });
+
   } else {
     // save user to the db //user []
-    users.push({
-      username: username,
-      password: password,
-    });
-    req.session.username = req.body.un;
+    // users.push({
+    //   username: username,
+    //   password: password,
+    // });
+    let user = new User({
+      username: req.body.un,
+      password: req.body.pw,
+      email: req.body.em
+    })
+    user.save().then((doc)=>{
+          res.redirect("loggedin-index.hbs")
+    })
+      req.session.username = req.body.un;
 
-    for (let i = 0; i < users.length; i++) {
-      //para lang toh macheck yung laman ng user array hehe everytime may nag reregister
-      console.log(users[i].username);
-    }
-    res.render("loggedin-index.hbs");
+    // for (let i = 0; i < users.length; i++) {
+    //   //para lang toh macheck yung laman ng user array hehe everytime may nag reregister
+    //   console.log(users[i].username);
+    // }
+    // res.render("loggedin-index.hbs");
   }
 });
 
@@ -103,6 +129,7 @@ app.get("/login", (req, res) => {
     res.render("login-page2.hbs");
   }
 });
+
 app.post("/login", urlencoder, (req, res) => {
   req.session.username = req.body.un;
   req.session.password = req.body.pw;
@@ -124,21 +151,44 @@ app.post("/login", urlencoder, (req, res) => {
 app.use(express.static(__dirname));
 
 function isAvailable(username) {
-  for (let i = 0; i < users.length; i++) {
-    if (users[i].username == username) {
-      return false;
-    }
-  }
-  return true;
+
+  User.findOne({
+        username: username
+    }).then((doc)=>{
+      console.log(username + " is not available")
+        return true;
+    },(err)=>{
+      ("username is available")
+       return false;
+    })
+
+//   for (let i = 0; i < users.length; i++) {
+//     if (users[i].username == username) {
+//       return false;
+//     }
+//   }
+//   return true;
 }
 
 function matches(username, password) {
-  for (let i = 0; i < users.length; i++) {
-    if (users[i].username == username && users[i].password == password) {
-      return true;
-    }
-  }
-  return false;
+
+  User.findOne({
+        username: username,
+        password: password
+    }).then((doc)=>{
+      console.log("username and password matched")
+        return true;
+    },(err)=>{
+      console.log("username and password not match")
+        return false;
+    })
+
+  // for (let i = 0; i < users.length; i++) {
+  //   if (users[i].username == username && users[i].password == password) {
+  //     return true;
+  //   }
+  // }
+  // return false;
 }
 
 app.get("/signout", (req, res) => {
@@ -156,6 +206,7 @@ app.post("/getArray", (req, res) => {
   res.send(JSON.stringify(symptoms));
 });
 
+
 app.listen(3000, function () {
   console.log("now listening to port 30000");
-});
+})

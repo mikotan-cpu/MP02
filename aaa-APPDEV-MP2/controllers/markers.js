@@ -13,51 +13,30 @@ const urlencoder = bodyparser.urlencoded({
 
 router.use(urlencoder)
 
-router.post("/register", urlencoder, (req, res) => {
-    let username = req.body.un;
-    let password = req.body.pw;
-   
-    console.log(username + " is registering")
-    if (username.trim() == "" || password.trim() == "") {
-      res.render("register.hbs", {
-        error: "Enter a username and password",
-      });
-      
-    } else if (isAvailable(username) == false) {
-      res.render("register.hbs", {
-        error: "Username not available",
-      });
-  
-    } else {
-      let user = new User({
-        username: req.body.un,
-        password: req.body.pw,
-        email: req.body.em
-      })
-  
-      req.session.username = req.body.un;
-  
-      user.save().then((doc)=>{
-            res.redirect("loggedin-index.hbs")
-      })
 
-    }
-  });
+router.get("/usermap", (req, res) => {
+  console.log("users controller line 40");
+  if (req.session.username) {
+    //it means that user has already signepad in
+    //go to home.html
+    res.render("loggedin-guestmap.hbs", {});
+  } else {
+    //the user has not logged in
+    res.render("guestmap.hbs");
+  }
+});
 
-  router.post("/login", urlencoder, (req, res) => {
-    req.session.username = req.body.un;
-    req.session.password = req.body.pw;
-  
-    if (matches(req.session.username, req.session.password) == false) {
-      res.render("login-page2.hbs", {
-        error: "Username and password does not match", //ilalagay toh as {{error}} dun sa login-page2.js
-      });
-    } else {
-      res.render("loggedin-index.hbs", {
-        //palitan yung home.hbs with homepage natin basically index html
-        username: req.session.username,
-      });
-    }
-  });
+
+router.get("/map", (req, res) => {
+  console.log("users controller line 40");
+  if (req.session.username) {
+    //it means that user has already signepad in
+    //go to home.html
+    res.render("loggedin-guestmap.hbs", {});
+  } else {
+    //the user has not logged in
+    res.render("guestmap.hbs");
+  }
+});
 
   module.exports = router

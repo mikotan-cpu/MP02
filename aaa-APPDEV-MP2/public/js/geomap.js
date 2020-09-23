@@ -1,8 +1,10 @@
+console.log("i am in geomap.js")
+
 var x = document.getElementById("demo");
 var vlat;
 var vlong;
 
-
+console.log("i am in geomap.js")
 
 function getLocation() {
 if (navigator.geolocation) {

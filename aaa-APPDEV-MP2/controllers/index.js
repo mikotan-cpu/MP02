@@ -1,10 +1,9 @@
-
 const express = require("express");
 const session = require("express-session");
 const bodyparser = require("body-parser");
 const cookieparser = require("cookie-parser");
 // const mongoose = require("mongoose")
-const router = express.Router()
+const router = express.Router();
 
 const app = express();
 
@@ -12,35 +11,39 @@ const urlencoder = bodyparser.urlencoded({
   extended: false,
 });
 
+const User = require("../models/users.js").User;
+const Marker = require("../models/markers.js").Marker;
 
-const User = require("../models/users.js").User
-const Marker = require("../models/markers.js").Marker
+router.use("/users", require("./users"));
+router.use("/markers", require("./markers"));
+//router.use("/index", require("./index"));
 
-
-
-router.use("/users", require("./users"))
-router.use("/markers", require("./markers"))
 // router.use("/login", require("./users"))
 
-router.get("/", function(req, res){
-  console.log("New GET /")
-   //load data from db
-   console.log("/");
-   if (req.session.username) {
-     console.log("/2");
-     //it means that user has already signed in
-     //go to home.html
-     res.render("loggedin-index.hbs");
-    
-   } else {
-     
-     //the user has not logged in
-     //go to index.html
-    //  res.sendFile(__dirname + '../views/index.html');
-    res.render("index.hbs")
-   }
 
-})
+
+router.get("/FAQS", function (req, res) {
+  console.log("get faqs");
+  //load data from db
+  
+    res.sendFile(path.join(__dirname, '../public', 'FAQs.html') ) //__dirname + "/public/FAQs.html");
+  
+});
+
+router.get("/", function (req, res) {
+  console.log("New GET /");
+  //load data from db
+  console.log("/");
+  if (req.session.username) {
+    console.log("/2");
+    //it means that user has already signed in
+    //go to home.html
+    res.render("loggedin-index.hbs");
+  } else {
+    //the user has not logged in
+    res.render("index.hbs");
+  }
+});
 
 app.use(
   bodyparser.urlencoded({
@@ -48,18 +51,18 @@ app.use(
   })
 );
 
-module.exports = router
+module.exports = router;
 
 // app.post("/register", urlencoder, (req, res) => {
 //   let username = req.body.un;
 //   let password = req.body.pw;
- 
+
 //   console.log(username + " is registering")
 //   if (username.trim() == "" || password.trim() == "") {
 //     res.render("register.hbs", {
 //       error: "Enter a username and password",
 //     });
-    
+
 //   } else if (isAvailable(username) == false) {
 //     res.render("register.hbs", {
 //       error: "Username not available",
@@ -82,7 +85,6 @@ module.exports = router
 //     user.save().then((doc)=>{
 //           res.redirect("loggedin-index.hbs")
 //     })
-      
 
 //     // for (let i = 0; i < users.length; i++) {
 //     //   //para lang toh macheck yung laman ng user array hehe everytime may nag reregister
@@ -102,7 +104,6 @@ module.exports = router
 //     });
 //   } else {
 //     //the user has not logged in
-//     //go to index.html
 //     res.render("login-page2.hbs");
 //   }
 // });
@@ -122,8 +123,6 @@ module.exports = router
 //     });
 //   }
 // });
-
-
 
 // app.use(express.static(__dirname));
 
@@ -182,4 +181,3 @@ module.exports = router
 //   console.log("symptoms: " + JSON.stringify(req.body));
 //   res.send(JSON.stringify(symptoms));
 // });
-

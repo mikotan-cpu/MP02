@@ -1,6 +1,8 @@
 // $("#submitInfo").click(function(){
 //     $.post("/getArray", userInfo) });
 
+
+console.log("i am in symptoms js")
 $(document).ready(function () {
   $("input[type=checkbox]").on("change", function () {
     if ($(this).is(":checked")) {

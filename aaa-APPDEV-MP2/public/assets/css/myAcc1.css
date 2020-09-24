@@ -1,0 +1,119 @@
+.navbar.navbar-light.navbar-expand-md {
+  background-color: #3AAFA9;
+}
+
+#Main {
+  justify-content: space-around;
+}
+
+#Main {
+  flex-direction: column;
+  display: block;
+  overflow: auto;
+  margin-bottom: 20px;
+  height: 414px;
+}
+
+#footer {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+  border-radius: 0 0 0 0;
+}
+
+p {
+  text-align: center;
+}
+
+#faqCover {
+  background-image: url(../../assets/img/FAQ3.jpg);
+  background-size: cover;
+  border-radius: 0 0 0 0;
+}
+
+body {
+  margin-top: 0;
+}
+
+#profileHeader {
+  font-size: 40px;
+  text-align: left;
+  padding-left: 80px;
+}
+
+.container.py-5 {
+  height: 5px;
+}
+
+#innerBox {
+  height: 300px;
+  background-color: white;
+  border-radius: 20px 20px;
+  width: 600px;
+  flex-direction: column;
+  padding-top: 70px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+body {
+  height: 300px;
+  background-color: #DEF2F1;
+}
+
+#innerDiv {
+  justify-content: space-around;
+}
+
+#header {
+  padding-left: 35px;
+  height: 25px;
+  padding-bottom: 50px;
+}
+
+.statusDiv {
+  border-bottom: 1px solid black;
+}
+
+.statusEditBtn {
+  height: 26px;
+  font-size: 10px;
+  align-self: center;
+  font-weight: bold;
+  background-color: #3AAFA9;
+}
+
+.statusLabel {
+  font-size: 30px;
+  padding-right: 10px;
+  align-self: center;
+  align-content: center;
+  text-align: center;
+}
+
+.statusTxt {
+  font-size: 30px;
+  text-align: left;
+  padding-right: 20px;
+  width: 360px;
+}
+
+#passwordTxt {
+  width: 300px;
+}
+
+#unTxt {
+  width: 270px;
+}
+#unTxt:focus{
+  border: none;
+  outline: none;
+}
+#unTxt2 {
+  width: 360px;
+}
+#unTxt2:focus{
+  border: none;
+  outline: none;
+}

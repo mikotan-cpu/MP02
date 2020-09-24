@@ -79,7 +79,7 @@ router.post("/login", urlencoder, (req, res) => {
       if (newUser) {
         console.log("trying to login");
         req.session.username = user.username;
-
+        req.session.password = user.password;
         res.render("loggedin-index.hbs");
       } else {
         res.render("login-page2.hbs", {
@@ -109,20 +109,173 @@ router.get("/login", (req, res) => {
   }
 });
 
-router.get("/map", (req, res) => {
-  console.log("users controller line 120");
-  if (req.session.username) {
-    //it means that user has already signepad in
-    //go to home.html
-    res.render("loggedin-guestmap.hbs", {});
-  } else {
-    //the user has not logged in
-    res.render("guestmap.hbs");
-  }
-});
 router.get("/signout", (req, res) => {
   req.session.destroy();
   res.redirect("/");
 });
+
+
+router.get("/symptoms", (req, res) => {
+
+  console.log("user getting symptoms in user controller");
+
+   let username =  req.session.username
+
+   if (req.session.username) {
+
+  Marker.isAvailable(username).then(
+    (newUser) => {
+      if (newUser) {
+        
+        console.log(newUser.username + " has already a marker")
+        res.render("Symptoms-updater.hbs", {});
+        
+      } else {
+        console.log(username + " has no marker")
+        res.render("Symptoms.hbs");
+      }
+    },
+    (error) => {
+      console.log("error getting symptoms: " + error);
+    }
+  );
+   }
+});
+//EDIT ACCOUNT
+//LEE
+router.get("/myAcc",(req,res)=>{
+
+  console.log("getting myAcc")
+  let user = {
+    username: req.session.username,
+    password: req.session.password,
+  };
+
+  User.login(user).then(
+    (newUser) => {
+      // console.log("authenticate " + newUser)
+      if (newUser) {
+        console.log(req.session.username + "is going to update their account");
+        req.session.username = user.username;
+
+        res.render("myAcc.hbs",{
+          status:newUser.status,
+          username: newUser.username,
+          password:newUser.password,
+          email:newUser.email
+        });
+      } else {
+        console.log("can't get my acc")
+      }
+    },
+    (error) => {
+      console.log("error logging in: " + error);
+    }
+  );
+      
+})
+
+//LEE
+router.post("/editUn",urlencoder,(req,res)=>{
+
+let user = {
+    username: req.session.username,
+    password: req.session.password,
+  };
+let newUn = req.body.un
+
+  User.updateUn(user,newUn).then(
+    (newUser) => {
+      // console.log("authenticate " + newUser)
+      if (newUser) {
+        console.log(user.username + " has updated their username");
+        req.session.username = newUn;
+        console.log("ETO NA PO "+ req.session.username)
+        res.render("myAcc.hbs",{
+          status:newUser.status,
+          username: newUser.username,
+          password:newUser.password,
+          email:newUser.email
+        });
+
+      } else {
+        console.log("HEHE")
+      }
+    },
+    (error) => {
+      console.log("error logging in: " + error);
+    }
+  );
+
+})
+
+
+//LEE
+router.post("/editPw",urlencoder,(req,res)=>{
+
+  let user = {
+      username: req.session.username,
+      password: req.session.password,
+    };
+  let newPw = req.body.pw
+  
+    User.updatePw(user,newPw).then(
+      (newUser) => {
+        // console.log("authenticate " + newUser)
+        if (newUser) {
+          console.log(user.username + " has updated their username");
+  
+  
+          res.render("myAcc.hbs",{
+            status:newUser.status,
+            username: newUser.username,
+            password:newUser.password,
+            email:newUser.email
+          });
+        } else {
+          console.log("HEHE")
+        }
+      },
+      (error) => {
+        console.log("error logging in: " + error);
+      }
+    );
+  
+  })
+
+//LEE
+  router.post("/editEm",urlencoder,(req,res)=>{
+
+    let user = {
+        username: req.session.username,
+        password: req.session.password,
+      };
+    let newEm = req.body.em
+    
+      User.updateEm(user,newEm).then(
+        (newUser) => {
+          // console.log("authenticate " + newUser)
+          if (newUser) {
+            console.log(user.username + " has updated their username");
+    
+    
+            res.render("myAcc.hbs",{
+              status:newUser.status,
+              username: newUser.username,
+              password:newUser.password,
+              email:newUser.email
+            });
+          } else {
+            console.log("HEHE")
+          }
+        },
+        (error) => {
+          console.log("error logging in: " + error);
+        }
+      );
+    
+    })
+
+
 
 module.exports = router;

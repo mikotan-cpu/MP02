@@ -20,16 +20,6 @@ router.use("/markers", require("./markers"));
 
 // router.use("/login", require("./users"))
 
-
-
-router.get("/FAQS", function (req, res) {
-  console.log("get faqs");
-  //load data from db
-  
-    res.sendFile(path.join(__dirname, '../public', 'FAQs.html') ) //__dirname + "/public/FAQs.html");
-  
-});
-
 router.get("/", function (req, res) {
   console.log("New GET /");
   //load data from db
@@ -44,7 +34,17 @@ router.get("/", function (req, res) {
     res.render("index.hbs");
   }
 });
-
+router.get("/map", (req, res) => {
+  console.log("users controller line 40");
+  if (req.session.username) {
+    //it means that user has already signepad in
+    //go to home.html
+    res.render("loggedin-guestmap.hbs", {});
+  } else {
+    //the user has not logged in
+    res.render("guestmap.hbs");
+  }
+});
 app.use(
   bodyparser.urlencoded({
     extended: false,

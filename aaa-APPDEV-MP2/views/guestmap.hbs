@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-  <title>COVID Cases Map Tracker</title>
+  <title>Guest Map</title>
   <link rel="stylesheet" href="../../../assets/bootstrap/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald" />
@@ -44,13 +44,13 @@
             <a class="nav-link" href="/" style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">Home</a>
           </li>
           <li class="nav-item" role="presentation">
-            <a class="nav-link" href="../users/login" style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">Login</a>
+            <a class="nav-link" href="users/login" style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">Login</a>
           </li>
           <li class="nav-item" role="presentation">
-            <a class="nav-link" href="#" style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">Map</a>
+            <a class="nav-link" href="guestmap.html" style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">Map</a>
           </li>
           <li class="nav-item" role="presentation">
-            <a class="nav-link" href="/FAQS" style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">FAQS</a>
+            <a class="nav-link" href="FAQs.html" style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">FAQS</a>
           </li>
           <li class="nav-item" role="presentation">
             <a class="nav-link" href="#" style="margin-top: 0px"><img src="../../../assets/images/profile icon.png"
@@ -224,22 +224,14 @@
               </p>
               <img class="legend" src="../../../assets/images/nosymps.png" alt="no symptoms marker" />
               <form action="../users/login">
-                  <input type="submit"  value="Add information" id="login-form-submit"
-                            class="btn btn-danger" style="
-                      width: 250px;
-                      height: 50px;
-                      font-size: 2em;
-                      border-radius: 40px;
-                    ">
-{{!-- 
-                <button onclick="../users/login'" type="button" class="btn btn-danger" style="
+                <button onclick="location.href='../users/login'" type="button" class="btn btn-danger" style="
                       width: 250px;
                       height: 50px;
                       font-size: 2em;
                       border-radius: 40px;
                     ">
                   Add information
-                </button> --}}
+                </button>
               </form>
             </div>
           </div>
@@ -261,7 +253,7 @@
       <br />Copyright © 2020 All Rights Reserved <br /><br />
     </p>
   </div>
-  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../js/jquery.min.js"></script>
   <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="../js/geomap.js"></script>
   <script

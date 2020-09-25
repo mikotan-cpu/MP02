@@ -39,6 +39,6 @@ app.use(
 console.log("going to controllers");
 app.use(require("./controllers"));
 
-app.listen(3000, function () {
-  console.log("now listening to port 30000");
+app.listen(process.env.PORT || 5000, function () {
+  console.log("listening on *:5000");
 });

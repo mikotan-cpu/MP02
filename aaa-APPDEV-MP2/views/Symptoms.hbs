@@ -41,11 +41,10 @@
           </li>
 
           <li class="nav-item" role="presentation">
-            <a class="nav-link" href="loggedin-guestmap.html"
-              style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">Map</a>
+            <a class="nav-link" href="/markers/map" style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">Map</a>
           </li>
           <li class="nav-item" role="presentation">
-            <a class="nav-link" href="loggedin-faqs.html"
+            <a class="nav-link" href="/loggedin-faqs.html"
               style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">FAQS</a>
           </li>
           <li class="nav-item dropdown">
@@ -54,10 +53,10 @@
               <img src="../../../assets/images/profile icon.png" alt="" />
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Update Health Status</a>
+              <a class="dropdown-item" href="../../users/myAcc">Update Health Status</a>
 
-              <a class="dropdown-item" href="#">Edit Account</a>
-              <a class="dropdown-item" href="/signout">Logout</a>
+              <a class="dropdown-item" href="../../users/myAcc">Edit Account</a>
+              <a class="dropdown-item" href="../users/signout">Logout</a>
             </div>
           </li>
         </ul>
@@ -199,7 +198,8 @@
             ">
           <div id="checkboxes" style="height: 60px; width: 350px">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="formCheck-1" value="positive" /><label
+              <input class="form-check-input" type="checkbox" id="formCheck-1" value="positive" />
+              <label
                 class="form-check-label" for="formCheck-1" style="font-size: 20px"><b>I am COVID-19 Positive</b></label>
             </div>
           </div>
@@ -218,12 +218,12 @@
           </div>
           <div id="checkboxes" style="height: 60px; width: 350px">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="formCheck-1" /><label class="form-check-label"
-                for="formCheck-1" style="font-size: 15px"><b>Traveled abroad in the past 14 days</b></label>
+              <input class="form-check-input" value="traveled" type="checkbox" id="formCheck-12" /><label class="form-check-label"
+                for="formCheck-12" style="font-size: 15px"><b>Traveled abroad in the past 14 days</b></label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="formCheck-2" /><label class="form-check-label"
-                for="formCheck-2" style="font-size: 15px"><b>Had close contact to a COVID - 19 Patient</b></label>
+              <input class="form-check-input"  value="contact"  type="checkbox" id="formCheck-22" /><label class="form-check-label"
+                for="formCheck-22" style="font-size: 15px"><b>Had close contact to a COVID - 19 Patient</b></label>
             </div>
           </div>
         </div>
@@ -249,12 +249,26 @@
           </div>
 
           <div class="align">
-            <input class="form-check-input" type="checkbox" id="formCheck-3" value="shareLocation" /><label
+            <input class="form-check-input" type="checkbox" id="shareLoc" value="shareLocation" required /><label
               class="form-check-label" for="formCheck-3">I agree to share my location to this website</label>
           </div>
         </div>
         <div style="align-self: center; text-align: center; margin-top: 20px">
+          {{!-- <a  class="btn btn-primary" id="submitInfo">Click Here</a> --}}
+          <button
+          
+              id="submitInfo"
+              class="btn btn-primary"
+              type="button"
+              style="align-self: center; text-align: center"
+              
+            >
+              SUBMIT
+            </button>
+ <div style="align-self: center; text-align: center; margin-top: 20px">
           <a href="../markers/finalMap" class="btn btn-primary" id="submitInfo">Click Here</a>
+        </div>
+        
         </div>
       </div>
     </div>

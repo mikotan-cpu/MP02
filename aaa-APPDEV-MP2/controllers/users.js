@@ -184,6 +184,25 @@ let user = {
   };
 let newUn = req.body.un
 
+Marker.updateUn(user,newUn).then(
+  (newUser) => {
+    // console.log("authenticate " + newUser)
+    if (newUser) {
+      console.log(user.username + " has updated their username");
+      req.session.username = newUn;
+      console.log("ETO NA PO "+ req.session.username + "2!!!!")
+      
+
+    } else {
+      console.log("HEHE")
+    }
+  },
+  (error) => {
+    console.log("error logging in: " + error);
+  }
+);
+
+
   User.updateUn(user,newUn).then(
     (newUser) => {
       // console.log("authenticate " + newUser)

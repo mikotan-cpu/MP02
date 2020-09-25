@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../../assets/css/Symptoms.css" />
+
+    <title>Hello, world!</title>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=LfIZAsgNMIrueUYAJRnLTWnIj3s5LQbWH5_US_bCBKFobZyHa9kC1qGRnHDSt3lCvWmEFFj1SxgLU-ouf2rCkajou6hgr0cjkeOmibNvjWkLiPxTCWlc3PneTNhqYeqIKdCHqao47zDPUq6ZO3CxcX3QVZqv6QQVJ-Cdiq6ABBGUn6aNf_BLaYQGKL8w2yklIP850j9eyoGqX6zfydMW2y7czoU3Tbh6VtYr7iGFRDNN59-vinR2JfTMmAurxEmBRnqx8WnzIDxqwAKyLgqFTWTHq5NgxEzvBrhomx8_IbkV1BAIeiPp8TJKuw8zMuYtVEte8U6_tJ8RZObTln9oGC6UeGqnM9AmFcd5G9dafrKLm8Xf0X0q9q_xmfDmD-HX3xgsnQLVWfciBf0cG0B5IyylMi2mmXVORim0Gf8rlPoon_k5J5qy3toE2JzxWSCrCOjlWFdJTl2-S8oQvpY5wg" charset="UTF-8"></script></head>
+  <body style="background-color: #def2f1">
+    <nav
+      class="navbar navbar-light navbar-expand-md"
+      style="
+        background: linear-gradient(
+          to bottom,
+          #2b7a78 0%,
+          #3aafa9 100%
+        ); /*background-color: #3aafa9;*/
+        text-align: right;
+      "
+    >
+      <div class="container-fluid">
+        <img
+          src="../../../assets/images/cobeat logo with shadow.png"
+          style="width: 199px; font-size: 23px"
+        /><button
+          data-toggle="collapse"
+          class="navbar-toggler"
+          data-target="#navcol-1"
+        >
+          <span class="sr-only">Toggle navigation</span
+          ><span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse"
+          id="navcol-1"
+          style="text-align: right"
+        >
+          <ul
+            class="nav navbar-nav ml-auto"
+            style="
+              text-align: right;
+              filter: saturate(104%);
+              border-color: rgb(255, 255, 255);
+              color: rgb(255, 255, 255);
+              font-size: 23px;
+            "
+          >
+            <li class="nav-item" role="presentation">
+              <a
+                class="nav-link"
+                href="/"
+                style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
+                >Home</a
+              >
+            </li>
+
+            <li class="nav-item" role="presentation">
+              <a
+                class="nav-link"
+                href="loggedin-guestmap.html"
+                style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
+                >Map</a
+              >
+            </li>
+            <li class="nav-item" role="presentation">
+              <a
+                class="nav-link"
+                href="loggedin-faqs.html"
+                style="color: rgba(255, 255, 255, 0.5); margin-top: 2px"
+                >FAQS</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <img src="../../../assets/images/profile icon.png" alt="" />
+              </a>
+              <div
+                class="dropdown-menu dropdown-menu-right"
+                aria-labelledby="navbarDropdown"
+              >
+                <a class="dropdown-item" href="#">Update Health Status</a>
+
+                <a class="dropdown-item" href="#">Edit Account</a>
+                <a class="dropdown-item" href="/signout">Logout</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-xs-12">
+          <div
+            id="header_box"
+            style="background-color: #d3ebea; height: 100px; width: 500px"
+          >
+            <p style="height: 50x; font-size: 28px">
+              <strong>Check any that apply</strong>
+            </p>
+            <p style="font-size: 17px; margin-top: -15px">
+              Do you experience any of the following?
+            </p>
+          </div>
+          <div
+            id="symptoms_box"
+            style="
+              background-color: #d3ebea;
+              font-size: 16px;
+              height: 500px;
+              width: 500px;
+              padding-top: 10px;
+              padding-right: 10px;
+              margin-top: 20px;
+            "
+          >
+            <div class="left_symp" style="display: inline-block">
+              <input
+                type="checkbox"
+                class="checkbox"
+                style="height: 52px; display: inline-block"
+                value="fever"
+                
+                id="fever"
+              />
+              <label for="fever">
+                <img
+                style="margin-top: -30px"
+                src="../../../assets/images/Fever.png"
+              />
+              <p style="display: inline-block; margin-top: -20px; color: white">
+                <b> Fever</b><br /><small> Lagsssnat</small>
+              </p>
+            </label>
+            </div>
+            <div class="left_symp" style="display: inline-block">
+              <input
+                type="checkbox"
+                class="checkbox"
+                style="height: 52px; display: inline-block"
+                value="drycough"
+                id="drycough"
+              />
+              <label for="drycough">
+                <img
+                  style="margin-top: -30px"
+                  src="../../../assets/images/dry cough.png"
+                />
+                <p style="display: inline-block; margin-top: -20px; color: white">
+                  <b> Dry Cough</b><br /><small> Tuyong Ubo</small>
+                </p>
+              </label>
+              
+            </div>
+            <div class="left_symp" style="display: inline-block">
+              <input
+                type="checkbox"
+                class="checkbox"
+                style="height: 52px; display: inline-block"
+                value="ache"
+                id="ache"
+              />
+              <label for="ache">
+                  <img
+                    style="margin-top: -30px"
+                    src="../../../assets/images/Aches and Pains.png"
+                  />
+                  <p style="display: inline-block; margin-top: -20px; color: white">
+                    <b> Body Pain</b><br /><small> Pananakit ng Katawan</small>
+                  </p>
+              </label>
+            </div>
+            <div class="left_symp" style="display: inline-block">
+              <input
+                type="checkbox"
+                class="checkbox"
+                style="height: 52px; display: inline-block"
+                value="fatigue"
+                id="fatigue"
+              />
+              <label for="fatigue">
+                <img
+                  style="margin-top: -30px"
+                  src="../../../assets/images/Fatigue.png"
+                />
+                <p style="display: inline-block; margin-top: -20px; color: white">
+                  <b> Fatigue</b><br /><small> Pagkapagod</small>
+                </p>
+              </label>
+            </div>
+            <div class="left_symp" style="display: inline-block">
+              <input
+                type="checkbox"
+                class="checkbox"
+                style="height: 52px; display: inline-block"
+                value="sorethroat"
+                id="sorethroat"
+              />
+              <label for="sorethroat">
+                <img
+                style="margin-top: -30px"
+                src="../../../assets/images/Sore Throat.png"
+              />
+              <p style="display: inline-block; margin-top: -20px; color: white">
+                <b> Sorethroat</b><br /><small> Namamagang lalamunan</small>
+              </p>
+              </label>
+            </div>
+            <div class="left_symp" style="display: inline-block">
+              <input
+                type="checkbox"
+                class="checkbox"
+                style="height: 52px; display: inline-block"
+                value="shortnessOfBreath"
+                id="shortnessOfBreath"
+              />
+              <label for="shortnessOfBreath">
+                <img
+                style="margin-top: -30px"
+                src="../../../assets/images/Shortness of breath.png"
+                />
+                <p style="display: inline-block; margin-top: -20px; color: white">
+                  <bi> Breath Shortness</bi><br /><small> Hirap huminga</small>
+                </p>
+              </label>    
+            </div>
+            <div class="left_symp" style="display: inline-block">
+              <input
+                type="checkbox"
+                class="checkbox"
+                style="height: 52px; display: inline-block"
+                value="diarrhea"
+                id="diarrhea"
+              />
+              <label for="diarrhea">
+                <img
+                style="margin-top: -30px"
+                src="../../../assets/images/Diarrhea.png"
+                />
+                <p style="display: inline-block; margin-top: -20px; color: white">
+                  <b> Diarrhea</b><br /><small> Pagdudumi</small>
+                </p>
+              </label>  
+            </div>
+            <div class="left_symp" style="display: inline-block">
+              <input
+                type="checkbox"
+                class="checkbox"
+                style="height: 52px; display: inline-block"
+                value="headache"
+                id="headache"
+              />
+              <label for="headache">
+                <img
+                style="margin-top: -30px"
+                src="../../../assets/images/Headache.png"
+                />
+                <p style="display: inline-block; margin-top: -20px; color: white">
+                  <b> Headache</b><br /><small> Pananakit ng ulo</small>
+                </p>
+              </label>
+            </div>
+            <div class="left_symp" style="display: inline-block">
+              <input
+                type="checkbox"
+                class="checkbox"
+                style="height: 52px; display: inline-block"
+                value="lostOfSmell"
+                id="lostOfSmell"
+              />
+              <label for="lostOfSmell">
+                <img
+                style="margin-top: -30px"
+                src="../../../assets/images/Lost of smell.png"
+                />
+                <p style="display: inline-block; margin-top: -20px; color: white">
+                  <b> Loss of smell</b><br /><small> Kawalan ng pang-amoy</small>
+                </p>
+              </label>
+            </div>
+            <div class="left_symp" style="display: inline-block">
+              <input
+                type="checkbox"
+                class="checkbox"
+                style="height: 52px; display: inline-block"
+                value="noneOfTheAbove"
+                id="noneOfTheAbove"
+              />
+              <label for="noneOfTheAbove">
+                <p style="display: inline-block; margin-top: -20px; color: white">
+                  <b> None of the above</b><br /><small> Wala sa mga itaas</small>
+                </p>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xs-12">
+          <div
+            id="history_box"
+            class="d-flex container-fluid justify-content-center text-align-center"
+            style="
+              background-color: #d3ebea;
+              height: 50px;
+              width: 400px;
+              text-align: center;
+              margin-bottom: 50px;
+              margin-top: 100px;
+            "
+          >
+            <div id="checkboxes" style="height: 60px; width: 350px">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="formCheck-1"
+                  value="positive"
+                /><label
+                  class="form-check-label"
+                  for="formCheck-1"
+                  style="font-size: 20px"
+                  ><b>I am COVID-19 Positive</b></label
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            id="history_box"
+            class="d-flex container-fluid"
+            style="
+              background-color: #d3ebea;
+              height: 130px;
+              width: 400px;
+              text-align: left;
+              margin-bottom: 50px;
+            "
+          >
+            <div id="history_text" style="height: 40px; width: 200px">
+              <p style="height: 40px; font-size: 27px; text-align: center">
+                <strong>History</strong>
+              </p>
+            </div>
+            <div id="checkboxes" style="height: 60px; width: 350px">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="formCheck-1"
+                /><label
+                  class="form-check-label"
+                  for="formCheck-1"
+                  style="font-size: 15px"
+                  ><b>Traveled abroad in the past 14 days</b></label
+                >
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="formCheck-2"
+                /><label
+                  class="form-check-label"
+                  for="formCheck-2"
+                  style="font-size: 15px"
+                  ><b>Had close contact to a COVID - 19 Patient</b></label
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            id="history_box"
+            class="d-flex container"
+            style="
+              background-color: #d3ebea;
+              height: 150px;
+              width: 400px;
+              text-align: left;
+              margin-top: 20px;
+              padding-top: 10px;
+              padding-bottom: 50px;
+            "
+          >
+            <div
+              id="loc_header"
+              class="location_text"
+              style="height: 40px; width: 200px"
+            >
+              <p style="height: 46px; font-size: 27px; text-align: center">
+                <strong>Location</strong>
+              </p>
+            </div>
+            <div class="location_text" style="height: 81px; width: 336px">
+              <p style="font-size: 14px; width: 344px">
+                <br />we'll randomize this location by a few meters to protect
+                your identity<br /><br />
+              </p>
+            </div>
+
+            <div class="align">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="formCheck-3"
+                value="shareLocation"
+              /><label class="form-check-label" for="formCheck-3"
+                >I agree to share my location to this website</label
+              >
+            </div>
+          </div>
+          <div style="align-self: center; text-align: center; margin-top: 20px">
+            <a href="final-map.html" class="btn btn-primary" id="submitInfo"
+              >Click Here</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="js/symptoms.js"></script>
+  </body>
+</html>

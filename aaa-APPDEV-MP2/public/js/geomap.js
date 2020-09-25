@@ -1,3 +1,23 @@
+
+
+
+console.log("i am in geomap.js")
+
+let markers = []  
+$.post('/markers/getMarkers', function(markersStorage){
+  // console.log(JSON.stringify(markersStorage) + "\n" + "geomap")
+  for(let i = 0; i < markersStorage.length; i++)
+  {
+    markers.push({
+      lati: markersStorage[i].latitude,
+      longi: markersStorage[i].longitude,
+      type: markersStorage[i].type,
+      username: markersStorage[i].username
+    })
+  }
+})
+
+
 var x = document.getElementById("demo");
 var vlat;
 var vlong;
@@ -56,130 +76,16 @@ x.innerHTML = "Latitude: " + position.coords.latitude +
      }
      };
 
-       var alati = 16.131400;
-       var alongi = 124.858482;
-   let markers = [ 
+     for(let i = 0; i< markers.length; i++)
      {
-         position: new google.maps.LatLng(vlat, vlong),
-         type: 'confirmed' 
-     },
-     
-     {
-      
-       position: new google.maps.LatLng(8.477217, 124.645920),
-         type: 'suspect'
+       console.log("asdasds")
+       markers[i].position = new google.maps.LatLng(markers[i].lati, markers[i].longi)
      }
-       ,
-     {
-       type: 'probable',
-       position: new google.maps.LatLng(10.753794, 123.084160)
-     },
-     {
-       type: 'probable',
-       position: new google.maps.LatLng(14.558555, 121.136086)
-     },
-     {
-       type: 'noSymptoms',
-         position: new google.maps.LatLng(10.503405, 122.966301)
-     },
-     {
-       type:'recovered',
-        position: new google.maps.LatLng(4.998451, 120.953209)
-     },
-     {
-       type:'probable',
-        position: new google.maps.LatLng(	6.116243, 125.171738)
-     },
-     {
-       type:'probable',
-        position: new google.maps.LatLng(	14.247142, 121.136673)
-     },
-     {
-       type:'noSymptoms',
-        position: new google.maps.LatLng(	14.309243, 121.031708)
-     },
-     {
-       type:'noSymptoms',
-        position: new google.maps.LatLng(	14.192048, 121.131180)
-     },
-     {
-       type:'noSymptoms',
-        position: new google.maps.LatLng(		14.537752, 121.001381)
-     },
-     {
-       type:'recovered',
-        position: new google.maps.LatLng(		14.115286, 120.962112)
-     },
-     {
-       type:'recovered',
-        position: new google.maps.LatLng(		13.941876, 121.164421)
-     },
-     {
-       type:'recovered',
-        position: new google.maps.LatLng(		13.941876, 121.164421)
-     },
-     {
-       type:'recovered',
-        position: new google.maps.LatLng(			14.083507, 121.147354)
-     },
-     {
-       type:'noSymptoms',
-        position: new google.maps.LatLng(			10.266182, 123.997292)
-     },
-     {
-       type:'noSymptoms',
-        position: new google.maps.LatLng(			14.625483, 121.124481)
-     },
-     {
-       type:'noSymptoms',
-        position: new google.maps.LatLng(				8.130604, 125.127655)
-     },
-     {
-       type:'confirmed',
-        position: new google.maps.LatLng(				7.056601, 124.676239)
-     },
-     {
-       type:'confirmed',
-        position: new google.maps.LatLng(				14.408133, 121.041466)
-     },
-     {
-       type:'confirmed',
-        position: new google.maps.LatLng(				15.090024, 120.662842)
-     },
-     {
-       type:'confirmed',
-        position: new google.maps.LatLng(				14.676208	, 121.043861)
-     },
-     {
-       type:'suspect',
-        position: new google.maps.LatLng(				15.156311	, 120.591774)
-     },
-     {
-       type:'probable',
-        position: new google.maps.LatLng(					9.740696	, 118.730072)
-     },
-     {
-       type:'confirmed',
-        position: new google.maps.LatLng(					16.0832	, 120.6200)
-     },
-     {
-       type:'noSymptoms',
-        position: new google.maps.LatLng(					17.6132	, 121.7270)
-     },
-     {
-       type:'noSymptoms',
-        position: new google.maps.LatLng(					17.5705	, 120.3873)
-     },
-     {
-       type:'recovered',
-        position: new google.maps.LatLng(					17.0981	, 120.9073)
-     }
-   ]  
      
   
 
      // Create markers.
-   console.log("array size: " + markers.length)
+     console.log("array size: " + markers.length)
      for (var i = 0; i < markers.length; i++) 
      {
        var marker = new google.maps.Marker({
@@ -194,7 +100,7 @@ x.innerHTML = "Latitude: " + position.coords.latitude +
    var unfilteredStatus = []
 
    $('input[type=checkbox]').on('change', function() {
-    if($(this).is(':checked'))
+    if(!$(this).is(':checked'))
     { let filter =  $(this).val()
         filteredStatus.push(filter)
         for(var i = unfilteredStatus.length - 1; i >= 0; i--) {
@@ -206,7 +112,7 @@ x.innerHTML = "Latitude: " + position.coords.latitude +
 }});
 
 $('input[type=checkbox]').on('change', function() {
-  if(!$(this).is(':checked'))
+  if($(this).is(':checked'))
     { let filter =  $(this).val()
         unfilteredStatus.push(filter)
         // filteredStatus = filteredStatus.filter(filter)
@@ -247,122 +153,12 @@ function filterMap() {
   }
   };
 
-let markers = [ 
-  {
-      position: new google.maps.LatLng(vlat, vlong),
-      type: 'confirmed' 
-  },
-  {
-     position: new google.maps.LatLng(8.477217, 124.645920),
-      type: 'suspect'
-  }
-    ,
-  {
-    type: 'probable',
-    position: new google.maps.LatLng(10.753794, 123.084160)
-  },
-  {
-    type: 'probable',
-    position: new google.maps.LatLng(14.558555, 121.136086)
-  },
-  {
-    type: 'noSymptoms',
-      position: new google.maps.LatLng(10.503405, 122.966301)
-  },
-  {
-    type:'recovered',
-     position: new google.maps.LatLng(4.998451, 120.953209)
-  },
-  {
-    type:'probable',
-     position: new google.maps.LatLng(	6.116243, 125.171738)
-  },
-  {
-    type:'probable',
-     position: new google.maps.LatLng(	14.247142, 121.136673)
-  },
-  {
-    type:'noSymptoms',
-     position: new google.maps.LatLng(	14.309243, 121.031708)
-  },
-  {
-    type:'noSymptoms',
-     position: new google.maps.LatLng(	14.192048, 121.131180)
-  },
-  {
-    type:'noSymptoms',
-     position: new google.maps.LatLng(		14.537752, 121.001381)
-  },
-  {
-    type:'recovered',
-     position: new google.maps.LatLng(		14.115286, 120.962112)
-  },
-  {
-    type:'recovered',
-     position: new google.maps.LatLng(		13.941876, 121.164421)
-  },
-  {
-    type:'recovered',
-     position: new google.maps.LatLng(		13.941876, 121.164421)
-  },
-  {
-    type:'recovered',
-     position: new google.maps.LatLng(			14.083507, 121.147354)
-  },
-  {
-    type:'noSymptoms',
-     position: new google.maps.LatLng(			10.266182, 123.997292)
-  },
-  {
-    type:'noSymptoms',
-     position: new google.maps.LatLng(			14.625483, 121.124481)
-  },
-  {
-    type:'noSymptoms',
-     position: new google.maps.LatLng(				8.130604, 125.127655)
-  },
-  {
-    type:'confirmed',
-     position: new google.maps.LatLng(				7.056601, 124.676239)
-  },
-  {
-    type:'confirmed',
-     position: new google.maps.LatLng(				14.408133, 121.041466)
-  },
-  {
-    type:'confirmed',
-     position: new google.maps.LatLng(				15.090024, 120.662842)
-  },
-  {
-    type:'confirmed',
-     position: new google.maps.LatLng(				14.676208	, 121.043861)
-  },
-  {
-    type:'suspect',
-     position: new google.maps.LatLng(				15.156311	, 120.591774)
-  },
-  {
-    type:'probable',
-     position: new google.maps.LatLng(					9.740696	, 118.730072)
-  },
-  {
-    type:'confirmed',
-     position: new google.maps.LatLng(					16.0832	, 120.6200)
-  },
-  {
-    type:'noSymptoms',
-     position: new google.maps.LatLng(					17.6132	, 121.7270)
-  },
-  {
-    type:'noSymptoms',
-     position: new google.maps.LatLng(					17.5705	, 120.3873)
-  },
-  {
-    type:'recovered',
-     position: new google.maps.LatLng(					17.0981	, 120.9073)
-  }
-]  
-  
+  for(let i = 0; i< markers.length; i++)
+     {
+       console.log("asdasds")
+       markers[i].position = new google.maps.LatLng(markers[i].lati, markers[i].longi)
+     }
+     
   // Create markers.
 
 var gmarkers = []
@@ -438,122 +234,12 @@ function unfilterMap() {
   }
   };
 
-let markers = [ 
-  {
-      position: new google.maps.LatLng(vlat, vlong),
-      type: 'confirmed' 
-  },
-  {
-     position: new google.maps.LatLng(8.477217, 124.645920),
-      type: 'suspect'
-  }
-    ,
-  {
-    type: 'probable',
-    position: new google.maps.LatLng(10.753794, 123.084160)
-  },
-  {
-    type: 'probable',
-    position: new google.maps.LatLng(14.558555, 121.136086)
-  },
-  {
-    type: 'noSymptoms',
-      position: new google.maps.LatLng(10.503405, 122.966301)
-  },
-  {
-    type:'recovered',
-     position: new google.maps.LatLng(4.998451, 120.953209)
-  },
-  {
-    type:'probable',
-     position: new google.maps.LatLng(	6.116243, 125.171738)
-  },
-  {
-    type:'probable',
-     position: new google.maps.LatLng(	14.247142, 121.136673)
-  },
-  {
-    type:'noSymptoms',
-     position: new google.maps.LatLng(	14.309243, 121.031708)
-  },
-  {
-    type:'noSymptoms',
-     position: new google.maps.LatLng(	14.192048, 121.131180)
-  },
-  {
-    type:'noSymptoms',
-     position: new google.maps.LatLng(		14.537752, 121.001381)
-  },
-  {
-    type:'recovered',
-     position: new google.maps.LatLng(		14.115286, 120.962112)
-  },
-  {
-    type:'recovered',
-     position: new google.maps.LatLng(		13.941876, 121.164421)
-  },
-  {
-    type:'recovered',
-     position: new google.maps.LatLng(		13.941876, 121.164421)
-  },
-  {
-    type:'recovered',
-     position: new google.maps.LatLng(			14.083507, 121.147354)
-  },
-  {
-    type:'noSymptoms',
-     position: new google.maps.LatLng(			10.266182, 123.997292)
-  },
-  {
-    type:'noSymptoms',
-     position: new google.maps.LatLng(			14.625483, 121.124481)
-  },
-  {
-    type:'noSymptoms',
-     position: new google.maps.LatLng(				8.130604, 125.127655)
-  },
-  {
-    type:'confirmed',
-     position: new google.maps.LatLng(				7.056601, 124.676239)
-  },
-  {
-    type:'confirmed',
-     position: new google.maps.LatLng(				14.408133, 121.041466)
-  },
-  {
-    type:'confirmed',
-     position: new google.maps.LatLng(				15.090024, 120.662842)
-  },
-  {
-    type:'confirmed',
-     position: new google.maps.LatLng(				14.676208	, 121.043861)
-  },
-  {
-    type:'suspect',
-     position: new google.maps.LatLng(				15.156311	, 120.591774)
-  },
-  {
-    type:'probable',
-     position: new google.maps.LatLng(					9.740696	, 118.730072)
-  },
-  {
-    type:'confirmed',
-     position: new google.maps.LatLng(					16.0832	, 120.6200)
-  },
-  {
-    type:'noSymptoms',
-     position: new google.maps.LatLng(					17.6132	, 121.7270)
-  },
-  {
-    type:'noSymptoms',
-     position: new google.maps.LatLng(					17.5705	, 120.3873)
-  },
-  {
-    type:'recovered',
-     position: new google.maps.LatLng(					17.0981	, 120.9073)
-  }
-]  
-  
+  for(let i = 0; i< markers.length; i++)
+     {
+       console.log("asdasds")
+       markers[i].position = new google.maps.LatLng(markers[i].lati, markers[i].longi)
+     }
+     
   // Create markers.
 
 var gmarkers = []

@@ -15,10 +15,13 @@ app.use(express.static(__dirname + "/public"));
 mongoose.Promise = global.Promise;
 
 mongoose
-  .connect("mongodb://localhost:27017/cobeatph-db", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://mikotan:09235786438@cobeat.ebtkj.mongodb.net/CoBeat?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then((doc) => {
     console.log("connected to mongodb");
   });

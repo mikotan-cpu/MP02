@@ -58,6 +58,30 @@ exports.login = function(user){
     })
   }
 
+  exports.saveSymptoms = function(user){
+
+    return new Promise(function(resolve, reject){
+      console.log(user.username +" updating their username..")
+  
+  
+      User.findOneAndUpdate({
+        username:user.username
+      },{
+          email: newEm
+      },{
+          new: true //para makita mo sa console yung updated
+      }).then((doc)=>{
+          console.log("Updated doc: "+ JSON.stringify(doc))
+          resolve(doc)
+      },(err)=>{
+        console.log("error user: " + err)
+          reject(err)
+      })
+  
+    })
+  
+  
+  }
 
 
 //LEE
@@ -140,6 +164,34 @@ exports.updateEm = function(user,newEm){
 
 
 }
+//adding symptoms
+exports.addSymp = function(user){
+  return new Promise(function(resolve, reject){
+    console.log(user.username +" updating their username..")
+
+
+    User.findOneAndUpdate({
+      username:user.username
+    },{
+        status: user.status,
+        latitude: user.latitude,
+        longitude: user.longitude
+        // $push: {
+        //   symptoms:user.symptoms
+        // }
+    },{
+        new: true //para makita mo sa console yung updated
+    }).then((doc)=>{
+        console.log("Updated userstatus: "+ JSON.stringify(doc))
+        resolve(doc)
+    },(err)=>{
+      console.log("error user: " + err)
+        reject(err)
+    })
+
+  })
+}
+
 
 
 // module.exports = {

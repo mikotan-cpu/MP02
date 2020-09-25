@@ -12,7 +12,18 @@ const urlencoder = bodyparser.urlencoded({
 });
 
 const User = require("../models/users.js").User;
-const Marker = require("../models/markers.js").Marker;
+// const Marker = require("../models/markers.js").Marker;
+
+
+var a = require("../models/markers.js")
+
+var b = a
+
+console.log(JSON.stringify(b) + "  sricson")
+
+
+
+
 
 router.use("/users", require("./users"));
 router.use("/markers", require("./markers"));

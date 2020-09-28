@@ -121,14 +121,16 @@
                     <div class="col-4">
                         <div
                             style="background-color:aquamarine; width: 350px; height:200px;border-radius:70px;padding-top:20px;">
-                            <p style="text-align: center;"><b>Philippines Live Cases Count</b></p>
+                            <p style="text-align: center;"><b>Philippines Live Recovered Cases Count</b></p>
+                            <h1 style="text-align: center;">{{recovered}}</h1>
                         </div>
 
                     </div>
                     <div class="col-4">
                         <div
                             style="background-color:aquamarine; width: 350px; height:200px;border-radius:70px;padding-top:20px">
-                            <p style="text-align: center;"><b>Worldwide Live Cases Count</b></p>
+                            <p style="text-align: center;"><b>Philippines Live Confirmed Cases Count</b></p>
+                            <h1 style="text-align: center;">{{total}}</h1>
 
                         </div>
 
@@ -137,8 +139,8 @@
                     <div class="col-4">
                         <div
                             style="background-color:aquamarine; width: 350px; height:200px;border-radius:70px;padding-top:20px">
-                            <p style="text-align: center;"><b>Worldwide Total Death Toll</b></p>
-
+                            <p style="text-align: center;"><b>Philippines Live Death Count</b></p>
+                            <h1 style="text-align: center;color:red;"> {{death}}</h1>
                         </div>
 
 
@@ -280,6 +282,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
+    {{!-- <script src="../js/scraper.js"></script> --}}
 </body>
 
 </html>

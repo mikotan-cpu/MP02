@@ -1,4 +1,5 @@
 const express = require("express");
+
 const session = require("express-session");
 const bodyparser = require("body-parser");
 const cookieparser = require("cookie-parser");
@@ -11,19 +12,8 @@ const urlencoder = bodyparser.urlencoded({
   extended: false,
 });
 
-const User = require("../models/users.js").User;
+const User = require("../models/users");
 // const Marker = require("../models/markers.js").Marker;
-
-
-var a = require("../models/markers.js")
-
-var b = a
-
-console.log(JSON.stringify(b) + "  sricson")
-
-
-
-
 
 router.use("/users", require("./users"));
 router.use("/markers", require("./markers"));
@@ -31,19 +21,49 @@ router.use("/markers", require("./markers"));
 
 // router.use("/login", require("./users"))
 
+let recovered;
+let total;
+let death;
+
 router.get("/", function (req, res) {
-  console.log("New GET /");
-  //load data from db
-  console.log("/");
+  User.getCases().then(
+    (cases) => {
+      // console.log("authenticate " + newUser)
+      if (cases) {
+        console.log("cases scraped");
+        recovered = cases.recovered;
+        total = cases.total;
+        death = cases.deaths;
+      } else {
+        console.log("error scraping");
+      }
+    },
+    (error) => {
+      console.log("error scraping in: " + error);
+    }
+  );
   if (req.session.username) {
     console.log("/2");
     //it means that user has already signed in
     //go to home.html
-    res.render("loggedin-index.hbs");
+    res.render("loggedin-index.hbs", {
+      recovered: recovered,
+      total: total,
+      death: death,
+    });
   } else {
     //the user has not logged in
-    res.render("index.hbs");
+    console.log("is scraped? " + recovered);
+    res.render("index.hbs", {
+      recovered: recovered,
+      total: total,
+      death: death,
+    });
   }
+
+  console.log("New GET /");
+  //load data from db
+  console.log("/");
 });
 router.get("/map", (req, res) => {
   console.log("users controller line 40");

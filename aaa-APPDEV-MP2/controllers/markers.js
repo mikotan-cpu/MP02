@@ -5,7 +5,7 @@ const User = require("../models/users");
 const Marker = require("../models/markers");
 
 const app = express();
-
+app.set("view engine", "hbs");
 const urlencoder = bodyparser.urlencoded({
   extended: false,
 });
@@ -15,7 +15,7 @@ router.use(urlencoder);
 router.post("/register", urlencoder, (req, res) => {
   let username = req.body.un;
   let password = req.body.pw;
-
+  userUsername  =  req.session.username
   console.log(username + " is registering");
   if (username.trim() == "" || password.trim() == "") {
     res.render("register.hbs", {
@@ -43,7 +43,7 @@ router.post("/register", urlencoder, (req, res) => {
 router.post("/login", urlencoder, (req, res) => {
   req.session.username = req.body.un;
   req.session.password = req.body.pw;
-
+  userUsername  =  req.session.username
   if (matches(req.session.username, req.session.password) == false) {
     res.render("login-page2.hbs", {
       error: "Username and password does not match", //ilalagay toh as {{error}} dun sa login-page2.js
@@ -91,6 +91,7 @@ router.get("/map", (req, res) => {
 
 
 router.get("/finalMap", (req, res) => {
+  userUsername  =  req.session.username
   console.log("printing symptsoms in finalmap");
   let symptoms = req.body.symptoms;
   console.log("symptoms: " + JSON.stringify(req.body));
@@ -100,6 +101,7 @@ router.get("/finalMap", (req, res) => {
 
 
 router.post("/getArray", urlencoder, (req, res) => {
+  userUsername  =  req.session.username
   console.log(" /getArray");
   let symptoms = req.body.symptoms;
   console.log("symptoms: " + JSON.stringify(req.body));
@@ -110,6 +112,7 @@ router.post("/getArray", urlencoder, (req, res) => {
 });
 
 router.post("/getMarkers", (req, res) => {
+  userUsername  =  req.session.username
   Marker.getMarkers((error, model)=>{
    
     // console.log(JSON.stringify(model) + "\n" + "haha")
@@ -165,17 +168,17 @@ router.post("/saveSymptoms", urlencoder, (req, res) => {
       console.log("error updating user status: " + error);
     }
   );
-
+    res.render("final-map.hbs")
 })
 
 
 router.post("/editSymptoms", urlencoder, (req, res) => {
   console.log("editing symptoms in marker controller")
   
-  console.log("got the item: " + req.body.user2)
-  console.log("got the item: " + req.body.status)
-  console.log("got the item: " + req.body.latitude)
-  console.log("got the item: " + req.body.longitude)
+  console.log("1 got the item: " + req.body.user2)
+  console.log("2 got the item: " + req.body.status)
+  console.log("3 got the item: " + req.body.latitude)
+  console.log("4 got the item: " + req.body.longitude)
   let user = {
     status : req.body.status,
     username: req.body.user2,
@@ -183,12 +186,12 @@ router.post("/editSymptoms", urlencoder, (req, res) => {
     longitude: req.body.longitude
   }
   // console.log("got the item: " + JSON.stringify(req.body.symptoms)
-  console.log("got the item body: " + JSON.stringify(req.body))
+  console.log("5 got the item body: " + JSON.stringify(req.body))
   Marker.editSymptoms(user).then(
     (newUser) => {
       if (newUser) {
-        console.log("updating status");
-       console.log(newUser.username + " status updated!")
+        console.log("updating status in marker");
+       console.log(newUser.username + " status updated in marker schema!")
       } else {
         console.log("Error line 193 marker controller")
       }
@@ -197,12 +200,14 @@ router.post("/editSymptoms", urlencoder, (req, res) => {
       console.log("error updating user status: " + error);
     }
   );
-
+    console.log("username of updating marker " + user.username)
   User.addSymp(user).then(
     (newUser) => {
       if (newUser) {
         console.log("updating status");
-       console.log(newUser.username + " updated!")
+       console.log(newUser.username + " updated! user schema")
+       res.render("final-map.hbs")
+       console.log("line 210 models controller updating status");
       } else {
         console.log("Error line 88 marker controller")
       }
@@ -211,7 +216,7 @@ router.post("/editSymptoms", urlencoder, (req, res) => {
       console.log("error updating user status: " + error);
     }
   );
-
+  
 })
 
 module.exports = router;

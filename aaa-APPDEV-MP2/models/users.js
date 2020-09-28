@@ -1,5 +1,7 @@
 const mongoose = require("mongoose")
 const crypto = require("crypto")
+const axios = require('axios');
+
 
 let User = mongoose.model("user", {
     username: String,
@@ -10,6 +12,56 @@ let User = mongoose.model("user", {
     symptoms: [String],
     status: String
 })
+
+
+// exports.getMarkers = function(next){
+//   console.log("getmarkers function")
+//   Marker.find({}, (err, model) => {
+//     next(err, model)
+//   })
+// }
+
+
+exports.getCases = function(){
+ 
+  console.log("getting casess")
+  return new Promise(function(resolve, reject){
+
+  const printNumbers = async () => {
+    try {
+      const { data } = await axios.get(
+        'https://api.coronatracker.com/v3/stats/worldometer/country?countryCode=PH'
+      );
+          
+      let cases = {
+        total: 0,
+        deaths: 0,
+        recovered: 0
+      }
+        
+          cases.total = data[0].totalConfirmed
+          cases.deaths = data[0].totalDeaths
+          cases.recovered = data[0].totalRecovered
+          console.log("Confirmed cases: " + cases.total)
+          console.log("Confirmed deaths: " + cases.deaths)
+          console.log("Confirmed recovered: " + cases.recovered)
+
+          // console.log("Confirmed cases: " + JSON.stringify(data[0].totalConfirmed))
+          // console.log("Confirmed deaths: " + JSON.stringify(data[0].totalDeaths))
+          // console.log("Confirmed recovered: " + JSON.stringify(data[0].totalRecovered))
+          resolve(cases)
+    } catch (error) {
+          console.log("error: " + error)
+          reject(error)
+      throw error;
+     
+    }
+  };
+  
+  printNumbers() 
+})   
+
+}
 
 
 exports.isAvailable = function(username){
@@ -61,7 +113,7 @@ exports.login = function(user){
   exports.saveSymptoms = function(user){
 
     return new Promise(function(resolve, reject){
-      console.log(user.username +" updating their username..")
+      console.log(user.username +" updating their symptoms..")
   
   
       User.findOneAndUpdate({

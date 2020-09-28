@@ -86,7 +86,7 @@ exports.editSymptoms = function(user){
     m.username = user.username;
     m.type = user.status;
 
-    m.findOneAndUpdate({
+    Marker.findOneAndUpdate({
       username: m.username
     },{
         type: m.type,

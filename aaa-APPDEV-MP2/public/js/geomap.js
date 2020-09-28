@@ -4,25 +4,35 @@
 console.log("i am in geomap.js")
 
 let markers = []  
-$.post('/markers/getMarkers', function(markersStorage){
-  // console.log(JSON.stringify(markersStorage) + "\n" + "geomap")
-  for(let i = 0; i < markersStorage.length; i++)
-  {
-    markers.push({
-      lati: markersStorage[i].latitude,
-      longi: markersStorage[i].longitude,
-      type: markersStorage[i].type,
-      username: markersStorage[i].username
-    })
-  }
-})
+
 
 
 var x = document.getElementById("demo");
 var vlat;
 var vlong;
 
-
+var icons = {
+  parking: {
+    icon: 'marker.png' 
+  },
+    confirmed: {
+    icon: '/../assets/images/confirmed.png'  
+    },
+    suspect: {
+      icon: '/../assets/images/suspect.png' 
+    },
+    probable: {
+      icon: '/../assets/images/probable.png' 
+    },
+    recovered: {
+      icon: '/../assets/images/recovered.png' 
+    },
+    noSymptoms: {
+      icon: '/../assets/images/nosymps.png' 
+    
+  }
+  };
+  
 
 function getLocation() {
 if (navigator.geolocation) {
@@ -47,54 +57,50 @@ x.innerHTML = "Latitude: " + position.coords.latitude +
  
    var map;
    function initMap() {
-     map = new google.maps.Map(
-         document.getElementById('map'),
-         {center: new google.maps.LatLng(14.6037, 121.3084), zoom: 8});
-
-     var iconBase =
-         'https://developers.google.com/maps/documentation/javascript/examples/full/images/';
-
-    var icons = {
-      parking: {
-       icon: 'marker.png' 
-      },
-       confirmed: {
-        icon: '/../assets/images/confirmed.png'  
-       },
-       suspect: {
-         icon: '/../assets/images/suspect.png' 
-       },
-       probable: {
-         icon: '/../assets/images/probable.png' 
-       },
-       recovered: {
-         icon: '/../assets/images/recovered.png' 
-       },
-       noSymptoms: {
-         icon: '/../assets/images/nosymps.png' 
-       
-     }
-     };
-
-     for(let i = 0; i< markers.length; i++)
-     {
-       console.log("asdasds")
-       markers[i].position = new google.maps.LatLng(markers[i].lati, markers[i].longi)
-     }
      
-  
 
-     // Create markers.
-     console.log("array size: " + markers.length)
-     for (var i = 0; i < markers.length; i++) 
-     {
-       var marker = new google.maps.Marker({
-         position: markers[i].position,
-         icon: icons[markers[i].type].icon,
-         map: map
-          });
-      };
+     $.post('/markers/getMarkers', function(markersStorage){
+      map = new google.maps.Map(
+        document.getElementById('map'),
+        {center: new google.maps.LatLng(14.5831, 120.9794), zoom: 10});
+
+        
+
+      // console.log(JSON.stringify(markersStorage) + "\n" + "geomap")
+      for(let i = 0; i < markersStorage.length; i++)
+      {
+        markers.push({
+          lati: markersStorage[i].latitude,
+          longi: markersStorage[i].longitude,
+          type: markersStorage[i].type,
+          username: markersStorage[i].username
+        })
+        // markers = markersStorage
+      }
+      for(let i = 0; i< markers.length; i++)
+      {
+        console.log("asdasds")
+        markers[i].position = new google.maps.LatLng(markers[i].lati, markers[i].longi)
+      }
+      
+    
+    
+      // Create markers.
+      console.log("array size: " + markers.length)
+      for (var i = 0; i < markers.length; i++) 
+      {
+        // console.log(icons[markers[4].type].icon)
+        var marker = new google.maps.Marker({
+          position: markers[i].position,
+          icon: icons[markers[i].type].icon,
+          map: map
+           });
+       };
+    })
+
    }
+
+   
  
    var filteredStatus = []
    var unfilteredStatus = []
@@ -128,7 +134,8 @@ $('input[type=checkbox]').on('change', function() {
 function filterMap() {
   map = new google.maps.Map(
       document.getElementById('map'),
-      {center: new google.maps.LatLng(14.6037, 121.3084), zoom: 8});
+ 
+      {center: new  google.maps.LatLng(14.5831, 120.9794), zoom: 10});
       console.log("FILTER() FILTERED")
      
  var icons = {
@@ -210,7 +217,8 @@ for(var j = 0; j < filteredStatus.length; j++)
 function unfilterMap() {
   map = new google.maps.Map(
       document.getElementById('map'),
-      {center: new google.maps.LatLng(14.6037, 121.3084), zoom: 8});
+
+      {center: new  google.maps.LatLng(14.5831, 120.9794), zoom: 10});
 
  var icons = {
    parking: {

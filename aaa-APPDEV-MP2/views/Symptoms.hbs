@@ -193,14 +193,30 @@
               height: 50px;
               width: 400px;
               text-align: center;
-              margin-bottom: 50px;
+              margin-bottom: 20px;
               margin-top: 100px;
             ">
           <div id="checkboxes" style="height: 60px; width: 350px">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="formCheck-1" value="positive" />
+              <input class="form-check-input" type="checkbox" id="positive" value="positive" />
               <label
-                class="form-check-label" for="formCheck-1" style="font-size: 20px"><b>I am COVID-19 Positive</b></label>
+                class="form-check-label" for="positive" style="font-size: 20px"><b>I am COVID-19 Positive</b></label>
+            </div>
+          </div>
+        </div>
+         <div id="history_box" class="d-flex container-fluid justify-content-center text-align-center" style="
+              background-color: #d3ebea;
+              height: 50px;
+              width: 400px;
+              text-align: center;
+              margin-bottom: 20px;
+              margin-top: 10px;
+            ">
+          <div id="checkboxes" style="height: 60px; width: 350px">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="recovered" value="recovered" />
+              <label
+                class="form-check-label" for="recovered" style="font-size: 20px"><b>I recovered from COVID-19</b></label>
             </div>
           </div>
         </div>
@@ -250,25 +266,24 @@
 
           <div class="align">
             <input class="form-check-input" type="checkbox" id="shareLoc" value="shareLocation" required /><label
-              class="form-check-label" for="formCheck-3">I agree to share my location to this website</label>
+              class="form-check-label" for="shareLoc">I agree to share my location to this website</label>
           </div>
         </div>
         <div style="align-self: center; text-align: center; margin-top: 20px">
           {{!-- <a  class="btn btn-primary" id="submitInfo">Click Here</a> --}}
-          <button
+  
           
-              id="submitInfo"
-              class="btn btn-primary"
-              type="button"
-              style="align-self: center; text-align: center"
-              
-            >
-              SUBMIT
-            </button>
- <div style="align-self: center; text-align: center; margin-top: 20px">
-          <a href="../markers/finalMap" class="btn btn-primary" id="submitInfo">Click Here</a>
-        </div>
-        
+           <form id="submitSympForm" action="/markers/saveSymptoms" method="POST"> 
+          <input type="hidden" name="user2">
+         <input type="hidden" name="status">
+            <input type="hidden" name="latitude">
+            <input type="hidden" name="longitude">
+           
+        <input type="submit" id="submitInfo" value="Submit"  class="btn btn-primary" 
+              style="align-self: center; text-align: center">
+     
+        </form>
+
         </div>
       </div>
     </div>

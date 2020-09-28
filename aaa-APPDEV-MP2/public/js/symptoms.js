@@ -33,6 +33,16 @@ var userInfo = {
       $("#noneOfTheAbove").prop("checked", false)
       spliceSymptom(symptom)
     }
+    else if(symptom=="positive")
+    {
+      $("#recovered").prop("checked", false)
+      spliceSymptom(symptom)
+    }
+    else if(symptom=="recovered")
+    {
+      $("#positive").prop("checked", false)
+      spliceSymptom(symptom)
+    }
     else if(symptom=="noneOfTheAbove")
     {
         $("#fever").prop("checked", false)
@@ -51,19 +61,6 @@ var userInfo = {
   
 
   });
-
-  // $("input[type=checkbox]").on("change", function () {
-  //   if (!$(this).is(":checked")) {
-  //     let symptom = $(this).val()
-  //     for(var i = userInfo.symptoms.length - 1; i >= 0; i--) {
-  //       if(userInfo.symptoms[i] == symptom) {
-  //         userInfo.symptoms.splice(i, 1);
-  //       }
-  //       console.log("symptom " + userInfo.symptoms[i] + " is added to userinfo")
-  //   }
-
-  //   }
-  // });
 
   function isInSymptoms(symptom)
   {
@@ -90,6 +87,24 @@ var userInfo = {
       console.log("deleting other symptoms")
       for(var i = userInfo.symptoms.length - 1; i >= 0; i--) {
         if(isInSymptoms(userInfo.symptoms[i])) {
+          userInfo.symptoms.splice(i, 1);
+        }
+      }
+    }
+    else if(symptom == "recovered")
+    {
+      console.log("deleting positive")
+      for(var i = userInfo.symptoms.length - 1; i >= 0; i--) {
+        if(userInfo.symptoms[i] == "positive") {
+          userInfo.symptoms.splice(i, 1);
+        }
+      }
+    }
+    else if(symptom == "positive")
+    {
+      console.log("deleting recovered")
+      for(var i = userInfo.symptoms.length - 1; i >= 0; i--) {
+        if(userInfo.symptoms[i] == "recovered") {
           userInfo.symptoms.splice(i, 1);
         }
       }
@@ -176,49 +191,105 @@ var userInfo = {
 // });
 
 $.post('/markers/getUser', function(username){
-  console.log("username is " + username)
+  console.log("[194-SYMPYTOMS.JS] - ooUSERNAME IS " + username)
   userInfo.username = username
 })
 
 
-$("#submitInfo").click(function () {
+// $("#submitInfo").click(function () {
 
-  console.log("submitinfo is CLICKED GOING TO FINALMAPJS")
-  console.log("submit info click:" + JSON.stringify(userInfo));
+//   if ($("#shareLoc").is(":checked"))
+//   {
+//     console.log("submitinfo is CLICKED GOING TO FINALMAPJS")
+//     console.log("submit info click:" + JSON.stringify(userInfo));
+  
+//     getHealthStatus();
+   
+//     console.log("HAHAHA " + userInfo.username)
+  
+//       $.post('/markers/saveSymptoms', {
+//         user2: userInfo.username,
+//         status: userInfo.status,
+//         latitude: userInfo.lat,
+//         longitude: userInfo.long,
+//         symptoms: userInfo.symptoms
+//       }, function(userInfo){
+//       console.log(JSON.stringify(userInfo) + "\n" + "userIasadnfo")
+//     })
+      
+//   }
+//   else{
+//     alert("Please agree to share location first")
+//   }
 
-  getHealthStatus();
+// });
+
+// $("#editInfo").click(function () {
+
+//   console.log(userInfo.username + " is editing their marker")
+//   console.log("edit info click:" + JSON.stringify(userInfo));
+
+//   getHealthStatus();
  
-  console.log("HAHAHA " + userInfo.username)
+//   console.log(" " + userInfo.username)
 
-    $.post('/markers/saveSymptoms', {
-      user2: userInfo.username,
-      status: userInfo.status,
-      latitude: userInfo.lat,
-      longitude: userInfo.long,
-      symptoms: userInfo.symptoms
-    }, function(userInfo){
-    console.log(JSON.stringify(userInfo) + "\n" + "userIasadnfo")
-  })
     
-});
-
-$("#editInfo").click(function () {
-
-  console.log(userInfo.username + " is editing their marker")
-  console.log("edit info click:" + JSON.stringify(userInfo));
-
-  getHealthStatus();
- 
-  console.log(" " + userInfo.username)
-
-    $.post('/markers/editSymptoms', {
-      user2: userInfo.username,
-      status: userInfo.status,
-      latitude: userInfo.lat,
-      longitude: userInfo.long,
-      symptoms: userInfo.symptoms
-    }, function(userInfo){
-    console.log(JSON.stringify(userInfo) + "\n" + "userIasadnfo")
-  })
+//     $.post('/markers/editSymptoms', {
+//       user2: userInfo.username,
+//       status: userInfo.status,
+//       latitude: userInfo.lat,
+//       longitude: userInfo.long,
+//       symptoms: userInfo.symptoms
+//     }, function(userInfo){
+//     console.log(JSON.stringify(userInfo) + "\n" + "userIasadnfo")
+//   })
     
-});
+// });
+
+
+
+$("#editInfo").click(function (e) {
+    e.preventDefault()
+
+    console.log(userInfo.username + " is editing their marker")
+    console.log("edit info click:" + JSON.stringify(userInfo));
+  
+    getHealthStatus();
+  
+    console.log(" " + userInfo.username)
+  
+    userInfo 
+    $("input[name=user2]").val(userInfo.username)
+    $("input[name=status]").val(userInfo.status)
+    $("input[name=latitude]").val(userInfo.lat)
+    $("input[name=longitude]").val(userInfo.long)
+    $("input[name=symptoms]").val(userInfo.symptoms)
+    
+  //                    $("input#edit_id").val(id)
+    $("form#editSympForm").submit()
+  })
+      
+
+  $("#submitInfo").click(function (e) {
+    e.preventDefault()
+
+    console.log(userInfo.username + " is submiting their marker")
+    console.log("submit info click:" + JSON.stringify(userInfo));
+  
+    getHealthStatus();
+  
+    console.log(" " + userInfo.username)
+  
+    userInfo 
+    $("input[name=user2]").val(userInfo.username)
+    $("input[name=status]").val(userInfo.status)
+    $("input[name=latitude]").val(userInfo.lat)
+    $("input[name=longitude]").val(userInfo.long)
+    $("input[name=symptoms]").val(userInfo.symptoms)
+    
+  //                    $("input#edit_id").val(id)
+    $("form#submitSympForm").submit()
+  })
+      
+
+

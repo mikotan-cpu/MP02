@@ -34,6 +34,24 @@ router.get("/", function (req, res) {
         recovered = cases.recovered;
         total = cases.total;
         death = cases.deaths;
+        if (req.session.username) {
+          console.log("/2");
+          //it means that user has already signed in
+          //go to home.html
+          res.render("loggedin-index.hbs", {
+            recovered: recovered,
+            total: total,
+            death: death,
+          });
+        } else {
+          //the user has not logged in
+          console.log("is scraped? " + recovered);
+          res.render("index.hbs", {
+            recovered: recovered,
+            total: total,
+            death: death,
+          });
+        }
       } else {
         console.log("error scraping");
       }
@@ -42,24 +60,6 @@ router.get("/", function (req, res) {
       console.log("error scraping in: " + error);
     }
   );
-  if (req.session.username) {
-    console.log("/2");
-    //it means that user has already signed in
-    //go to home.html
-    res.render("loggedin-index.hbs", {
-      recovered: recovered,
-      total: total,
-      death: death,
-    });
-  } else {
-    //the user has not logged in
-    console.log("is scraped? " + recovered);
-    res.render("index.hbs", {
-      recovered: recovered,
-      total: total,
-      death: death,
-    });
-  }
 
   console.log("New GET /");
   //load data from db

@@ -11,15 +11,63 @@ const urlencoder = bodyparser.urlencoded({
 });
 
 router.use(urlencoder);
-
+router.get("/", function (req, res) {
+  User.getCases().then(
+    (cases) => {
+      // console.log("authenticate " + newUser)
+      if (cases) {
+        console.log("cases scraped");
+        recovered = cases.recovered;
+        total = cases.total;
+        death = cases.deaths;
+      } else {
+        console.log("error scraping");
+      }
+    },
+    (error) => {
+      console.log("error scraping in: " + error);
+    }
+  );
+});
 router.get("/register", (req, res) => {
   if (req.session.username) {
     //it means that user has already signed in
     //go to home.html
-    res.render("loggedin-index.hbs", {
-      //palitan yung home.hbs with homepage natin basically index html
-      username: req.session.username,
-    });
+    User.getCases().then(
+      (cases) => {
+        // console.log("authenticate " + newUser)
+        if (cases) {
+          console.log("cases scraped");
+          recovered = cases.recovered;
+          total = cases.total;
+          death = cases.deaths;
+          if (req.session.username) {
+            console.log("/2");
+            //it means that user has already signed in
+            //go to home.html
+            res.render("loggedin-index.hbs", {
+              recovered: recovered,
+              total: total,
+              death: death,
+              username: req.session.username,
+            });
+          } else {
+            //the user has not logged in
+            console.log("is scraped? " + recovered);
+            res.render("index.hbs", {
+              recovered: recovered,
+              total: total,
+              death: death,
+            });
+          }
+        } else {
+          console.log("error scraping");
+        }
+      },
+      (error) => {
+        console.log("error scraping in: " + error);
+      }
+    );
   } else {
     //the user has not logged in
     res.render("register.hbs");
@@ -49,7 +97,41 @@ router.post("/register", urlencoder, (req, res) => {
 
         req.session.username = req.body.un;
         User.create(user).then((doc) => {
-          res.render("loggedin-index.hbs");
+          User.getCases().then(
+            (cases) => {
+              // console.log("authenticate " + newUser)
+              if (cases) {
+                console.log("cases scraped");
+                recovered = cases.recovered;
+                total = cases.total;
+                death = cases.deaths;
+                if (req.session.username) {
+                  console.log("/2");
+                  //it means that user has already signed in
+                  //go to home.html
+                  res.render("loggedin-index.hbs", {
+                    recovered: recovered,
+                    total: total,
+                    death: death,
+                    username: req.session.username,
+                  });
+                } else {
+                  //the user has not logged in
+                  console.log("is scraped? " + recovered);
+                  res.render("index.hbs", {
+                    recovered: recovered,
+                    total: total,
+                    death: death,
+                  });
+                }
+              } else {
+                console.log("error scraping");
+              }
+            },
+            (error) => {
+              console.log("error scraping in: " + error);
+            }
+          );
         });
       } else {
         res.render("register.hbs", {
@@ -66,6 +148,7 @@ router.post("/register", urlencoder, (req, res) => {
 router.post("/login", urlencoder, (req, res) => {
   console.log("POST /user/login");
   console.log(req.body.un + " is the username");
+
   let user = {
     username: req.body.un,
     password: req.body.pw,
@@ -80,7 +163,40 @@ router.post("/login", urlencoder, (req, res) => {
         console.log("trying to login");
         req.session.username = user.username;
         req.session.password = user.password;
-        res.render("loggedin-index.hbs");
+        User.getCases().then(
+          (cases) => {
+            // console.log("authenticate " + newUser)
+            if (cases) {
+              console.log("cases scraped");
+              recovered = cases.recovered;
+              total = cases.total;
+              death = cases.deaths;
+              if (req.session.username) {
+                console.log("/2");
+                //it means that user has already signed in
+                //go to home.html
+                res.render("loggedin-index.hbs", {
+                  recovered: recovered,
+                  total: total,
+                  death: death,
+                });
+              } else {
+                //the user has not logged in
+                console.log("is scraped? " + recovered);
+                res.render("index.hbs", {
+                  recovered: recovered,
+                  total: total,
+                  death: death,
+                });
+              }
+            } else {
+              console.log("error scraping");
+            }
+          },
+          (error) => {
+            console.log("error scraping in: " + error);
+          }
+        );
       } else {
         res.render("login-page2.hbs", {
           error: "Username and password does not match", //ilalagay toh as {{error}} dun sa login-page2.js
@@ -114,38 +230,32 @@ router.get("/signout", (req, res) => {
   res.redirect("/");
 });
 
-
 router.get("/symptoms", (req, res) => {
-
   console.log("user getting symptoms in user controller");
 
-   let username =  req.session.username
+  let username = req.session.username;
 
-   if (req.session.username) {
-
-  Marker.isAvailable(username).then(
-    (newUser) => {
-      if (newUser) {
-        
-        console.log(newUser.username + " has already a marker")
-        res.render("Symptoms-updater.hbs", {});
-        
-      } else {
-        console.log(username + " has no marker")
-        res.render("Symptoms.hbs");
+  if (req.session.username) {
+    Marker.isAvailable(username).then(
+      (newUser) => {
+        if (newUser) {
+          console.log(newUser.username + " has already a marker");
+          res.render("Symptoms-updater.hbs", {});
+        } else {
+          console.log(username + " has no marker");
+          res.render("Symptoms.hbs");
+        }
+      },
+      (error) => {
+        console.log("error getting symptoms: " + error);
       }
-    },
-    (error) => {
-      console.log("error getting symptoms: " + error);
-    }
-  );
-   }
+    );
+  }
 });
 //EDIT ACCOUNT
 //LEE
-router.get("/myAcc",(req,res)=>{
-
-  console.log("getting myAcc")
+router.get("/myAcc", (req, res) => {
+  console.log("getting myAcc");
   let user = {
     username: req.session.username,
     password: req.session.password,
@@ -158,67 +268,39 @@ router.get("/myAcc",(req,res)=>{
         console.log(req.session.username + "is going to update their account");
         req.session.username = user.username;
 
-        res.render("myAcc.hbs",{
-          status:newUser.status,
+        res.render("myAcc.hbs", {
+          status: newUser.status,
           username: newUser.username,
-          password:newUser.password,
-          email:newUser.email
+          password: newUser.password,
+          email: newUser.email,
         });
       } else {
-        console.log("can't get my acc")
+        console.log("can't get my acc");
       }
     },
     (error) => {
       console.log("error logging in: " + error);
     }
   );
-      
-})
+});
 
 //LEE
-router.post("/editUn",urlencoder,(req,res)=>{
-
-let user = {
+router.post("/editUn", urlencoder, (req, res) => {
+  let user = {
     username: req.session.username,
     password: req.session.password,
   };
-let newUn = req.body.un
+  let newUn = req.body.un;
 
-Marker.updateUn(user,newUn).then(
-  (newUser) => {
-    // console.log("authenticate " + newUser)
-    if (newUser) {
-      console.log(user.username + " has updated their username");
-      req.session.username = newUn;
-      console.log("ETO NA PO "+ req.session.username + "2!!!!")
-      
-
-    } else {
-      console.log("HEHE")
-    }
-  },
-  (error) => {
-    console.log("error logging in: " + error);
-  }
-);
-
-
-  User.updateUn(user,newUn).then(
+  Marker.updateUn(user, newUn).then(
     (newUser) => {
       // console.log("authenticate " + newUser)
       if (newUser) {
         console.log(user.username + " has updated their username");
         req.session.username = newUn;
-        console.log("ETO NA PO "+ req.session.username)
-        res.render("myAcc.hbs",{
-          status:newUser.status,
-          username: newUser.username,
-          password:newUser.password,
-          email:newUser.email
-        });
-
+        console.log("ETO NA PO " + req.session.username + "2!!!!");
       } else {
-        console.log("HEHE")
+        console.log("HEHE");
       }
     },
     (error) => {
@@ -226,75 +308,87 @@ Marker.updateUn(user,newUn).then(
     }
   );
 
-})
-
-
-//LEE
-router.post("/editPw",urlencoder,(req,res)=>{
-
-  let user = {
-      username: req.session.username,
-      password: req.session.password,
-    };
-  let newPw = req.body.pw
-  
-    User.updatePw(user,newPw).then(
-      (newUser) => {
-        // console.log("authenticate " + newUser)
-        if (newUser) {
-          console.log(user.username + " has updated their username");
-  
-  
-          res.render("myAcc.hbs",{
-            status:newUser.status,
-            username: newUser.username,
-            password:newUser.password,
-            email:newUser.email
-          });
-        } else {
-          console.log("HEHE")
-        }
-      },
-      (error) => {
-        console.log("error logging in: " + error);
+  User.updateUn(user, newUn).then(
+    (newUser) => {
+      // console.log("authenticate " + newUser)
+      if (newUser) {
+        console.log(user.username + " has updated their username");
+        req.session.username = newUn;
+        console.log("ETO NA PO " + req.session.username);
+        res.render("myAcc.hbs", {
+          status: newUser.status,
+          username: newUser.username,
+          password: newUser.password,
+          email: newUser.email,
+        });
+      } else {
+        console.log("HEHE");
       }
-    );
-  
-  })
+    },
+    (error) => {
+      console.log("error logging in: " + error);
+    }
+  );
+});
 
 //LEE
-  router.post("/editEm",urlencoder,(req,res)=>{
+router.post("/editPw", urlencoder, (req, res) => {
+  let user = {
+    username: req.session.username,
+    password: req.session.password,
+  };
+  let newPw = req.body.pw;
 
-    let user = {
-        username: req.session.username,
-        password: req.session.password,
-      };
-    let newEm = req.body.em
-    
-      User.updateEm(user,newEm).then(
-        (newUser) => {
-          // console.log("authenticate " + newUser)
-          if (newUser) {
-            console.log(user.username + " has updated their username");
-    
-    
-            res.render("myAcc.hbs",{
-              status:newUser.status,
-              username: newUser.username,
-              password:newUser.password,
-              email:newUser.email
-            });
-          } else {
-            console.log("HEHE")
-          }
-        },
-        (error) => {
-          console.log("error logging in: " + error);
-        }
-      );
-    
-    })
+  User.updatePw(user, newPw).then(
+    (newUser) => {
+      // console.log("authenticate " + newUser)
+      if (newUser) {
+        console.log(user.username + " has updated their username");
 
+        res.render("myAcc.hbs", {
+          status: newUser.status,
+          username: newUser.username,
+          password: newUser.password,
+          email: newUser.email,
+        });
+      } else {
+        console.log("HEHE");
+      }
+    },
+    (error) => {
+      console.log("error logging in: " + error);
+    }
+  );
+});
 
+//LEE
+router.post("/editEm", urlencoder, (req, res) => {
+  let user = {
+    username: req.session.username,
+    password: req.session.password,
+  };
+  let newEm = req.body.em;
+
+  User.updateEm(user, newEm).then(
+    (newUser) => {
+      // console.log("authenticate " + newUser)
+      if (newUser) {
+        console.log(user.username + " has updated their username");
+
+        res.render("myAcc.hbs", {
+          status: newUser.status,
+          username: newUser.username,
+          password: newUser.password,
+          email: newUser.email,
+        });
+      } else {
+        console.log("HEHE");
+      }
+    },
+    (error) => {
+      console.log("error logging in: " + error);
+    }
+  );
+});
 
 module.exports = router;

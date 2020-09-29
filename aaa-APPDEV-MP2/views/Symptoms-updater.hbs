@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <!-- Required meta tags -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -41,25 +42,24 @@
           </li>
 
           <li class="nav-item" role="presentation">
-            <a class="nav-link" href="/markers/map"
-              style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">Map</a>
+            <a class="nav-link" href="/markers/map" style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">Map</a>
           </li>
           <li class="nav-item" role="presentation">
             <a class="nav-link" href="/loggedin-faqs.html"
               style="color: rgba(255, 255, 255, 0.5); margin-top: 2px">FAQS</a>
           </li>
-           <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="/assets/images/profile icon.png" alt="" />
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="../users/symptoms">Update Health Status</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <img src="/assets/images/profile icon.png" alt="" />
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../users/symptoms">Update Health Status</a>
 
-                            <a class="dropdown-item" href="../users/myAcc">Edit Account</a>
-                            <a class="dropdown-item" href="users/signout">Logout</a>
-                        </div>
-                    </li>
+              <a class="dropdown-item" href="../users/myAcc">Edit Account</a>
+              <a class="dropdown-item" href="users/signout">Logout</a>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -186,7 +186,7 @@
         </div>
       </div>
 
-      <div class="col-md-6 col-xs-12">
+      <div class="col-md-6 col-xs-12" style="z-index: -1;">
         <div id="history_box" class="d-flex container-fluid justify-content-center text-align-center" style="
               background-color: #d3ebea;
               height: 50px;
@@ -198,12 +198,12 @@
           <div id="checkboxes" style="height: 60px; width: 350px">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" id="positive" value="positive" />
-              <label
-                class="form-check-label" for="positive" style="font-size: 20px"><b>I am COVID-19 Positive</b></label>
+              <label class="form-check-label" for="positive" style="font-size: 20px"><b>I am COVID-19
+                  Positive</b></label>
             </div>
           </div>
         </div>
-         <div id="history_box" class="d-flex container-fluid justify-content-center text-align-center" style="
+        <div id="history_box" class="d-flex container-fluid justify-content-center text-align-center" style="
               background-color: #d3ebea;
               height: 50px;
               width: 400px;
@@ -214,8 +214,8 @@
           <div id="checkboxes" style="height: 60px; width: 350px">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" id="recovered" value="recovered" />
-              <label
-                class="form-check-label" for="recovered" style="font-size: 20px"><b>I recovered from COVID-19</b></label>
+              <label class="form-check-label" for="recovered" style="font-size: 20px"><b>I recovered from
+                  COVID-19</b></label>
             </div>
           </div>
         </div>
@@ -232,28 +232,30 @@
             </p>
           </div>
           <div id="checkboxes" style="height: 60px; width: 350px">
-                <div class="form-check">
-              <input class="form-check-input" value="traveled" type="checkbox" id="formCheck-12" /><label class="form-check-label"
-                for="formCheck-12" style="font-size: 15px"><b>Traveled abroad in the past 14 days</b></label>
+            <div class="form-check">
+              <input class="form-check-input" value="traveled" type="checkbox" id="formCheck-12" /><label
+                class="form-check-label" for="formCheck-12" style="font-size: 15px"><b>Traveled abroad in the past 14
+                  days</b></label>
             </div>
             <div class="form-check">
-              <input class="form-check-input"  value="contact"  type="checkbox" id="formCheck-22" /><label class="form-check-label"
-                for="formCheck-22" style="font-size: 15px"><b>Had close contact to a COVID - 19 Patient</b></label>
+              <input class="form-check-input" value="contact" type="checkbox" id="formCheck-22" /><label
+                class="form-check-label" for="formCheck-22" style="font-size: 15px"><b>Had close contact to a COVID - 19
+                  Patient</b></label>
             </div>
           </div>
         </div>
 
-    <div style="align-self: center; text-align: center; margin-top: 20px">
-        <form id="editSympForm" action="/markers/editSymptoms" method="POST"> 
-          <input type="hidden" name="user2">
-         <input type="hidden" name="status">
+        <div style="align-self: center; text-align: center; margin-top: 20px">
+          <form id="editSympForm" action="/markers/editSymptoms" method="POST">
+            <input type="hidden" name="user2">
+            <input type="hidden" name="status">
             <input type="hidden" name="latitude">
             <input type="hidden" name="longitude">
-           
-        <input type="submit" id="editInfo" value="Submit"  class="btn btn-primary" 
+
+            <input type="submit" id="editInfo" value="Submit" class="btn btn-primary"
               style="align-self: center; text-align: center">
-     
-        </form>
+
+          </form>
         </div>
       </div>
     </div>

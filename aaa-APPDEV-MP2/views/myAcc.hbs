@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <link rel="icon" href="/assets/images/tabIcon.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>My Profile</title>
@@ -73,9 +74,9 @@
                     </div>
                     <div style="align-self:center;height:40px">
                         {{#if status}}
-                            <p class="statusTxt">{{status}}</p>
-                            {{else}}
-                            <p class="statusTxt">no status</p>
+                        <p class="statusTxt">{{status}}</p>
+                        {{else}}
+                        <p class="statusTxt">no status</p>
                         {{/if}}
                     </div>
                 </div>
@@ -86,37 +87,40 @@
                             <p class="statusLabel"><strong>Username:</strong></p>
                         </div>
                         <div style="align-self:center;height:29px;padding-right:28px">
-                            <input name="un" id="unTxt" type="text" style="border: none;font-size:22px" value="{{username}}">
+                            <input name="un" id="unTxt" type="text" style="border: none;font-size:22px"
+                                value="{{username}}">
                         </div>
                         <input class="btn btn-primary statusEditBtn" type="submit" value="Edit">
                     </div>
                 </form>
-                
-                
+
+
                 <form method="POST" action="../users/editPw">
                     <div class="d-flex statusDiv">
                         <div style="align-self:center;height:40px">
                             <p class="statusLabel"><strong>Password:</strong></p>
                         </div>
                         <div style="align-self:center;height:29px;padding-right:32px">
-                            <input name="pw" id="unTxt" type="text" style="border: none;font-size:22px" value="{{password}}">
+                            <input name="pw" id="unTxt" type="text" style="border: none;font-size:22px"
+                                value="{{password}}">
                         </div>
                         <input class="btn btn-primary statusEditBtn" type="submit" value="Edit">
                     </div>
                 </form>
-                
+
                 <form method="POST" action="../users/editEm">
                     <div class="d-flex statusDiv">
                         <div style="align-self:center;height:40px">
                             <p class="statusLabel"><strong>Email:</strong></p>
                         </div>
                         <div style="align-self:center;height:29px">
-                                <input name="em" id="unTxt2" type="text" style="border: none;font-size:22px" value="{{email}}">
+                            <input name="em" id="unTxt2" type="text" style="border: none;font-size:22px"
+                                value="{{email}}">
                         </div>
                         <input class="btn btn-primary statusEditBtn" type="submit" value="Edit">
                     </div>
                 </form>
-                
+
             </div>
             <picture><img src="/assets/images/navigate%20map.png" style="height: 300px; width: 300px"></picture>
         </div>
@@ -144,8 +148,7 @@
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script
     
 </body>
 

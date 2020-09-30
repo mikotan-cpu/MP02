@@ -95,7 +95,7 @@ exports.create = function(user){
   
 exports.login = function(user){
     return new Promise(function(resolve, reject){
-      console.log("in promise of login: " + user.username)
+      console.log("users model line 98: in promise of login: " + user.username)
       User.findOne({
         username : user.username,
         // password : crypto.createHash("md5").update(user.password).digest("hex")
@@ -110,6 +110,7 @@ exports.login = function(user){
     })
   }
 
+  
   exports.saveSymptoms = function(user){
 
     return new Promise(function(resolve, reject){

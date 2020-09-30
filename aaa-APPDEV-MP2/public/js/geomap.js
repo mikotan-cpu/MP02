@@ -46,9 +46,11 @@ if (navigator.geolocation) {
 function showPosition(position) {
 x.innerHTML = "Latitude: " + position.coords.latitude + 
 "<br>Longitude: " + position.coords.longitude;
- 
- vlat =  position.coords.latitude;
- vlong = position.coords.longitude;
+ let addLat = Math.random() * 100 / 1000
+ let addLong = Math.random() * 100 / 1000
+ vlat =  position.coords.latitude + addLat;
+ vlong = position.coords.longitude + addLong;
+ console.log("original lat: " + vlat + "randomized lat: " + (vlat + addLat))
  console.log(vlat + vlong)
 
  initMap()

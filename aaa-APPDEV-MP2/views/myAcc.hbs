@@ -64,7 +64,7 @@
     </nav>
     <div id="Main" class="d-flex container" style="background-color: #DEF2F1;">
         <div id="header">
-            <p id="profileHeader"><strong>My account</strong></p>
+            <p id="profileHeader"><strong>My Account</strong></p>
         </div>
         <div id="innerDiv" class="d-flex container">
             <div id="innerBox" class="d-flex container">
@@ -73,10 +73,11 @@
                         <p class="statusLabel"><strong>Status:</strong></p>
                     </div>
                     <div style="align-self:center;height:40px">
-                        {{#if status}}
-                        <p class="statusTxt">{{status}}</p>
+                        {{#if status }}
+                    
+                            <p class="statusTxt">{{status}}</p>
                         {{else}}
-                        <p class="statusTxt">no status</p>
+                         <p class="statusTxt">No Status</p>
                         {{/if}}
                     </div>
                 </div>
@@ -125,7 +126,7 @@
             <picture><img src="/assets/images/navigate%20map.png" style="height: 300px; width: 300px"></picture>
         </div>
     </div>
-    <div id="footer" class="d-flex jumbotron" style="background-color: #17252a; height: 145px">
+    <div id="footer" class="d-flex jumbotron" style="background-color: #17252a; height: 145px; margin-top: 200px;">
         <div style="height: 50px; font-size: 12px">
             <img src="/assets/images/cobeat logo white.png" style="width: 268px; height: 67px" />
         </div>

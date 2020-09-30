@@ -44,3 +44,9 @@ app.use(require("./controllers"));
 app.listen(process.env.PORT || 5000, function () {
   console.log("listening on *:5000");
 });
+
+// app.use(require("./controllers"));
+// app.listen(3000, function () {
+//   console.log("now listening to port 3000");
+
+// });

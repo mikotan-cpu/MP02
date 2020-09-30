@@ -36,11 +36,19 @@ var userInfo = {
     else if(symptom=="positive")
     {
       $("#recovered").prop("checked", false)
+      $("#tested").prop("checked", false)
       spliceSymptom(symptom)
     }
     else if(symptom=="recovered")
     {
       $("#positive").prop("checked", false)
+      $("#tested").prop("checked", false)
+      spliceSymptom(symptom)
+    }
+    else if(symptom == "tested")
+    {
+      $("#positive").prop("checked", false)
+      $("#recovered").prop("checked", false)
       spliceSymptom(symptom)
     }
     else if(symptom=="noneOfTheAbove")
@@ -95,7 +103,7 @@ var userInfo = {
     {
       console.log("deleting positive")
       for(var i = userInfo.symptoms.length - 1; i >= 0; i--) {
-        if(userInfo.symptoms[i] == "positive") {
+        if(userInfo.symptoms[i] == "positive" || userInfo.symptoms[i] == "tested") {
           userInfo.symptoms.splice(i, 1);
         }
       }
@@ -104,7 +112,16 @@ var userInfo = {
     {
       console.log("deleting recovered")
       for(var i = userInfo.symptoms.length - 1; i >= 0; i--) {
-        if(userInfo.symptoms[i] == "recovered") {
+        if(userInfo.symptoms[i] == "recovered" || userInfo.symptoms[i] == "tested" ) {
+          userInfo.symptoms.splice(i, 1);
+        }
+      }
+    }
+    else if(symptom == "tested")
+    {
+      console.log("deleting recovered + positive")
+      for(var i = userInfo.symptoms.length - 1; i >= 0; i--) {
+        if(userInfo.symptoms[i] == "recovered" || userInfo.symptoms[i] == "positive" ) {
           userInfo.symptoms.splice(i, 1);
         }
       }
@@ -147,9 +164,12 @@ var userInfo = {
         "<br>Longitude: " +
         position.coords.longitude
     );
+    let addLat = Math.random() * 100 / 1000
+    let addLong = Math.random() * 100 / 1000
 
-    let lat = position.coords.latitude;
-    let long = position.coords.longitude;
+    let lat = position.coords.latitude + addLat;
+    let long = position.coords.longitude +addLong;
+    
     console.log(lat + long);
     userInfo.lat = lat;
     userInfo.long = long;
@@ -167,20 +187,32 @@ var userInfo = {
           console.log("user is positive");
           status = "confirmed";
           break
-        } else if (userInfo.symptoms[i] == "noSymptoms") {
+        } else if (userInfo.symptoms[i] == "noneOfTheAbove") {
           status = "noSymptoms";
-          pass = 1 
+           
           break
         } else if (userInfo.symptoms[i] == "recovered") {
           status = "recovered";
-          pass =1
+      
           break
         } else if (
-          userInfo.symptoms[i] == "traveled" ||
+          (userInfo.symptoms[i] == "traveled" ||
           userInfo.symptoms[i] == "contact" ||
-          userInfo.symptoms[i] == "contact"
-        ) {
-          status = "suspect";
+          userInfo.symptoms[i] == "contact")  ) 
+          {
+            for(let j = 0; j<userInfo.symptoms.length; j++)
+            {
+              if(isInSymptoms(userInfo.symptoms[j]))
+              {
+                status = "suspect";
+                
+              }
+            }
+              if(status == "suspect" && ($("#tested").is(":checked")))
+              {
+                status = "probable"
+                break
+              }
 
         }
       
@@ -271,24 +303,32 @@ $("#editInfo").click(function (e) {
       
 
   $("#submitInfo").click(function (e) {
-    e.preventDefault()
+    if ($("#shareLoc").is(":checked"))
+    {
+          e.preventDefault()
 
-    console.log(userInfo.username + " is submiting their marker")
-    console.log("submit info click:" + JSON.stringify(userInfo));
-  
-    getHealthStatus();
-  
-    console.log(" " + userInfo.username)
-  
-    userInfo 
-    $("input[name=user2]").val(userInfo.username)
-    $("input[name=status]").val(userInfo.status)
-    $("input[name=latitude]").val(userInfo.lat)
-    $("input[name=longitude]").val(userInfo.long)
-    $("input[name=symptoms]").val(userInfo.symptoms)
-    
-  //                    $("input#edit_id").val(id)
-    $("form#submitSympForm").submit()
+          console.log(userInfo.username + " is submiting their marker")
+          console.log("submit info click:" + JSON.stringify(userInfo));
+        
+          getHealthStatus();
+        
+          console.log(" " + userInfo.username)
+        
+          userInfo 
+          $("input[name=user2]").val(userInfo.username)
+          $("input[name=status]").val(userInfo.status)
+          $("input[name=latitude]").val(userInfo.lat)
+          $("input[name=longitude]").val(userInfo.long)
+          $("input[name=symptoms]").val(userInfo.symptoms)
+          
+        //                    $("input#edit_id").val(id)
+          $("form#submitSympForm").submit()
+    }else{
+                alert("Please agree to share location first")
+                // $("form#submitSympForm").submit(false)
+                return false
+                
+            }
   })
       
 

@@ -50,6 +50,7 @@ router.get("/register", (req, res) => {
               total: total,
               death: death,
               username: req.session.username,
+              password: req.session.password
             });
           } else {
             //the user has not logged in
@@ -85,64 +86,67 @@ router.post("/register", urlencoder, (req, res) => {
       error: "Enter a username and password",
     });
   }
-
-  User.isAvailable(username).then(
-    (newUser) => {
-      if (!newUser) {
-        let user = {
-          username: req.body.un,
-          password: req.body.pw,
-          email: req.body.em,
-        };
-
-        req.session.username = req.body.un;
-        User.create(user).then((doc) => {
-          User.getCases().then(
-            (cases) => {
-              // console.log("authenticate " + newUser)
-              if (cases) {
-                console.log("cases scraped");
-                recovered = cases.recovered;
-                total = cases.total;
-                death = cases.deaths;
-                if (req.session.username) {
-                  console.log("/2");
-                  //it means that user has already signed in
-                  //go to home.html
-                  res.render("loggedin-index.hbs", {
-                    recovered: recovered,
-                    total: total,
-                    death: death,
-                    username: req.session.username,
-                  });
+  else{
+    User.isAvailable(username).then(
+      (newUser) => {
+        if (!newUser) {
+          let user = {
+            username: req.body.un,
+            password: req.body.pw,
+            email: req.body.em,
+          };
+  
+          req.session.username = req.body.un;
+          req.session.password = req.body.pw;
+          User.create(user).then((doc) => {
+            User.getCases().then(
+              (cases) => {
+                // console.log("authenticate " + newUser)
+                if (cases) {
+                  console.log("cases scraped");
+                  recovered = cases.recovered;
+                  total = cases.total;
+                  death = cases.deaths;
+                  if (req.session.username) {
+                    console.log("/2");
+                    //it means that user has already signed in
+                    //go to home.html
+                    res.render("loggedin-index.hbs", {
+                      recovered: recovered,
+                      total: total,
+                      death: death,
+                      username: req.session.username,
+                    });
+                  } else {
+                    //the user has not logged in
+                    console.log("is scraped? " + recovered);
+                    res.render("index.hbs", {
+                      recovered: recovered,
+                      total: total,
+                      death: death,
+                    });
+                  }
                 } else {
-                  //the user has not logged in
-                  console.log("is scraped? " + recovered);
-                  res.render("index.hbs", {
-                    recovered: recovered,
-                    total: total,
-                    death: death,
-                  });
+                  console.log("error scraping");
                 }
-              } else {
-                console.log("error scraping");
+              },
+              (error) => {
+                console.log("error scraping in: " + error);
               }
-            },
-            (error) => {
-              console.log("error scraping in: " + error);
-            }
-          );
-        });
-      } else {
-        res.render("register.hbs", {
-          error: "Username not available",
-        });
+            );
+          });
+        } else {
+          res.render("register.hbs", {
+            error: "Username not available",
+          });
+        }
+      },
+      (error) => {
+        console.log("error logging in: " + error);
       }
-    },
-    (error) => {
-      console.log("error logging in: " + error);
-    }
-  );
+    );
+  }
+  
 });
 
 router.post("/login", urlencoder, (req, res) => {
@@ -261,13 +265,16 @@ router.get("/myAcc", (req, res) => {
     password: req.session.password,
   };
 
+  console.log("user going to my acc: " + user.username + "pass: " +  user.password)
   User.login(user).then(
     (newUser) => {
       // console.log("authenticate " + newUser)
       if (newUser) {
-        console.log(req.session.username + "is going to update their account");
+        console.log(req.session.username + "is going to view their account");
         req.session.username = user.username;
 
+          if(newUser.status == "noSymptoms")
+              newUser.status = "No Symptoms"
         res.render("myAcc.hbs", {
           status: newUser.status,
           username: newUser.username,
@@ -275,7 +282,7 @@ router.get("/myAcc", (req, res) => {
           email: newUser.email,
         });
       } else {
-        console.log("can't get my acc");
+        console.log("can't get my acc linw 278 users controller");
       }
     },
     (error) => {

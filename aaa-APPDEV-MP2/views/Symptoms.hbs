@@ -65,7 +65,7 @@
       </div>
     </div>
   </nav>
-  <div class="container">
+  <div class="container" style="margin-bottom: 65px;"> 
     <div class="row">
       <div class="col-md-6 col-xs-12">
         <div id="header_box" style="background-color: #d3ebea; height: 100px; width: 500px">
@@ -191,14 +191,29 @@
 
 
 
-      <div class="col-md-6 col-xs-12" style="z-index: -1;">
+      <div class="col-md-6 col-xs-12" >
+         <div id="history_box" class="d-flex container-fluid justify-content-center text-align-center" style="
+              background-color: #d3ebea;
+              height: 50px;
+              width: 400px;
+              text-align: center;
+              margin-bottom: 20px;
+              margin-top: 70px;
+            ">
+          <div id="checkboxes" style="height: 60px; width: 350px">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="tested" value="tested" />
+              <label class="form-check-label" for="tested" style="font-size: 20px"><b>I got tested for COVID-19</b></label>
+            </div>
+          </div>
+        </div>
         <div id="history_box" class="d-flex container-fluid justify-content-center text-align-center" style="
               background-color: #d3ebea;
               height: 50px;
               width: 400px;
               text-align: center;
               margin-bottom: 20px;
-              margin-top: 100px;
+              margin-top: 10px;
             ">
           <div id="checkboxes" style="height: 60px; width: 350px">
             <div class="form-check">
@@ -224,6 +239,7 @@
             </div>
           </div>
         </div>
+       
         <div id="history_box" class="d-flex container-fluid" style="
               background-color: #d3ebea;
               height: 130px;
@@ -293,7 +309,24 @@
         </div>
       </div>
     </div>
-  </div> <!-- Optional JavaScript -->
+  </div> 
+  
+        <div id="footer" class="d-flex jumbotron" style="background-color: #17252a; height: 145px">
+            <div style="height: 50px; font-size: 12px">
+                <img src="/assets/images/cobeat logo white.png" style="width: 268px; height: 67px" />
+            </div>
+            <p id="footerParagraph" style="
+            width: 392px;
+            color: #ffffff;
+            height: 72px;
+            font-size: 21px;
+            margin-top: 100px
+            margin-bottom: 0px;
+          ">
+                <br />Copyright © 2020 All Rights Reserved <br /><br />
+            </p>
+        </div>
+        <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
